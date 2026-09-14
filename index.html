@@ -113,6 +113,18 @@
     <div id="casosUltimaSE" style="font-size: 28px; font-weight: bold;">--</div>
 </div>
 
+    <div id="kpiQ3" style="
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 10px 0 20px 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+">
+    <div style="font-size: 14px;">Municípios acima do Q3</div>
+    <div id="municipiosAcimaQ3" style="font-size: 28px; font-weight: bold;">--</div>
+</div>
+
     <p>
         Superintendência Regional de Saúde de Colatina
         — 2026
@@ -201,6 +213,23 @@ const casosUltimaSE = dados
 document.getElementById("casosUltimaSE").textContent =
     casosUltimaSE.toLocaleString("pt-BR"); 
 
+        // Conta quantos municípios estão acima do Q3 na última SE
+const municipiosAcimaQ3 = dados.filter(d =>
+    Number(d.SE) === ultimaSE &&
+    d.Casos !== "" &&
+    d.Casos !== null &&
+    d.Casos !== undefined &&
+    d.Q3 !== "" &&
+    d.Q3 !== null &&
+    d.Q3 !== undefined &&
+    Number(d.Casos) > Number(d.Q3)
+).length;
+
+// Mostra o resultado no KPI
+document.getElementById("municipiosAcimaQ3").textContent =
+    `${municipiosAcimaQ3} de 15`;
+
+        
         prepararDados();
 
     }
