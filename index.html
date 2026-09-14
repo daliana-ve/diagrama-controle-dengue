@@ -101,6 +101,18 @@
     <div id="totalCasos" style="font-size: 28px; font-weight: bold;">--</div>
 </div>
 
+    <div id="kpiUltimaSE" style="
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 10px 0 20px 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+">
+    <div style="font-size: 14px;">Casos na última SE</div>
+    <div id="casosUltimaSE" style="font-size: 28px; font-weight: bold;">--</div>
+</div>
+
     <p>
         Superintendência Regional de Saúde de Colatina
         — 2026
@@ -174,6 +186,20 @@ const totalCasos = dados
 // Mostra o total no KPI
 document.getElementById("totalCasos").textContent =
     totalCasos.toLocaleString("pt-BR");
+
+       // Calcula o total de casos da última SE disponível
+const casosUltimaSE = dados
+    .filter(d =>
+        Number(d.SE) === ultimaSE &&
+        d.Casos !== "" &&
+        d.Casos !== null &&
+        d.Casos !== undefined
+    )
+    .reduce((soma, d) => soma + Number(d.Casos || 0), 0);
+
+// Mostra o total da última SE no KPI
+document.getElementById("casosUltimaSE").textContent =
+    casosUltimaSE.toLocaleString("pt-BR"); 
 
         prepararDados();
 
