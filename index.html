@@ -334,6 +334,40 @@ function atualizarGrafico() {
     const q3 =
         base.map(d => d.Q3);
 
+    // ------------------------------------------------
+// KPIs DO MUNICÍPIO SELECIONADO
+// ------------------------------------------------
+
+// Última SE disponível no painel
+const ultimaSEPainel = Math.max(
+    ...dados
+        .filter(d => d.Casos !== null)
+        .map(d => d.SE)
+);
+
+// Casos acumulados do município selecionado
+const totalCasosMunicipio = base
+    .filter(d => d.Casos !== null)
+    .reduce((soma, d) => soma + d.Casos, 0);
+
+// Casos do município na última SE disponível
+const registroUltimaSE = base.find(
+    d => d.SE === ultimaSEPainel
+);
+
+const casosUltimaSEMunicipio =
+    registroUltimaSE &&
+    registroUltimaSE.Casos !== null
+        ? registroUltimaSE.Casos
+        : 0;
+
+// Atualiza os KPIs
+document.getElementById("totalCasos").textContent =
+    totalCasosMunicipio.toLocaleString("pt-BR");
+
+document.getElementById("casosUltimaSE").textContent =
+    casosUltimaSEMunicipio.toLocaleString("pt-BR");
+
 // Identifica as semanas em que os casos ultrapassaram o Q3
 const dadosAlerta = base.filter(d =>
     d.Casos !== null &&
