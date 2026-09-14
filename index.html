@@ -89,6 +89,21 @@
 
     <h1>Diagrama de Controle da Dengue</h1>
     <p id="atualizacao" style="font-weight: bold;"></p>
+    <h3 style="margin-bottom: 5px;">
+    Cenário consolidado da Regional de Saúde
+</h3>
+    <div id="kpiRegionalTotal" style="
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+">
+    <div style="font-size: 14px;">Casos prováveis acumulados — Regional</div>
+    <div id="totalCasosRegional" style="font-size: 28px; font-weight: bold;">--</div>
+</div>
+    
     <div id="kpiTotal" style="
     display: inline-block;
     padding: 12px 20px;
@@ -313,6 +328,14 @@ function atualizarGrafico() {
     const base = dados
         .filter(d => d.Municipio === municipio)
         .sort((a,b) => a.SE - b.SE);
+
+    // Total acumulado de casos prováveis da Regional
+const totalCasosRegional = dados
+    .filter(d => d.Casos !== null)
+    .reduce((soma, d) => soma + d.Casos, 0);
+
+document.getElementById("totalCasosRegional").textContent =
+    totalCasosRegional.toLocaleString("pt-BR");
 
 
     const semanas =
