@@ -89,6 +89,17 @@
 
     <h1>Diagrama de Controle da Dengue</h1>
     <p id="atualizacao" style="font-weight: bold;"></p>
+    <div id="kpiTotal" style="
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+">
+    <div style="font-size: 14px;">Casos prováveis acumulados</div>
+    <div id="totalCasos" style="font-size: 28px; font-weight: bold;">--</div>
+</div>
 
     <p>
         Superintendência Regional de Saúde de Colatina
@@ -154,6 +165,15 @@ Papa.parse(arquivoCSV, {
         // Mostra a informação no topo do painel
         document.getElementById("atualizacao").textContent =
             `Dados atualizados até a SE ${ultimaSE}/2026`;
+        
+        // Calcula o total acumulado de casos prováveis
+const totalCasos = dados
+    .filter(d => d.Casos !== "" && d.Casos !== null && d.Casos !== undefined)
+    .reduce((soma, d) => soma + Number(d.Casos || 0), 0);
+
+// Mostra o total no KPI
+document.getElementById("totalCasos").textContent =
+    totalCasos.toLocaleString("pt-BR");
 
         prepararDados();
 
