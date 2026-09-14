@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Diagrama de Controle da Dengue - Regional de Colatina</title>
+
+    <!-- Biblioteca dos gráficos -->
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+    <!-- Biblioteca para ler o CSV -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        header p {
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .container {
+            max-width: 1250px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .filtro {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .filtro label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            min-width: 280px;
+        }
+
+        .grafico {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        #grafico {
+            width: 100%;
+            height: 600px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>Diagrama de Controle da Dengue</h1>
+
+    <p>
+        Superintendência Regional de Saúde de Colatina
+        — 2026
+    </p>
+
+</header>
+
+
+<div class="container">
+
+    <div class="filtro">
+
+        <label for="municipio">
+            Município:
+        </label>
+
+        <select id="municipio"></select>
+
+    </div>
+
+
+    <div class="grafico">
+
+        <div id="grafico"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const arquivoCSV = "painel_dengue_regional_2026.csv";
+
+let dados = [];
+
+
+/* ------------------------------------------------
+   LER O BANCO DE DADOS
+------------------------------------------------ */
+
+Papa.parse(arquivoCSV, {
+
+    download: true,
+
+    header: true,
+
+    skipEmptyLines: true,
+
+    complete: function(resultado) {
+
+        dados = resultado.data;
+
+        prepararDados();
+
+    }
+
+});
+
+
+/* ------------------------------------------------
+   PREPARAR OS DADOS
+------------------------------------------------ */
+
+function prepararDados() {
+
+    dados.forEach(d => {
+
+        d.SE = Number(d.SE);
+
+        d.Casos =
+            d.Casos === "" ? null : Number(d.Casos);
+
+        d.Mediana =
+            d.Mediana === "" ? null : Number(d.Mediana);
+
+        d.Q1 =
+            d.Q1 === "" ? null : Number(d.Q1);
+
+        d.Q3 =
+            d.Q3 === "" ? null : Number(d.Q3);
+
+    });
+
+
+    const municipios = [
+
+        ...new Set(
+            dados.map(d => d.Municipio)
+        )
+
+    ].sort();
+
+
+    const seletor =
+        document.getElementById("municipio");
+
+
+    municipios.forEach(municipio => {
+
+        const opcao =
+            document.createElement("option");
+
+        opcao.value = municipio;
+
+        opcao.textContent = municipio;
+
+        seletor.appendChild(opcao);
+
+    });
+
+
+    seletor.addEventListener(
+        "change",
+        atualizarGrafico
+    );
+
+
+    atualizarGrafico();
+
+}
+
+
+/* ------------------------------------------------
+   CRIAR O DIAGRAMA
+------------------------------------------------ */
+
+function atualizarGrafico() {
+
+    const municipio =
+        document.getElementById("municipio").value;
+
+
+    const base = dados
+        .filter(d => d.Municipio === municipio)
+        .sort((a,b) => a.SE - b.SE);
+
+
+    const semanas =
+        base.map(d => d.SE);
+
+
+    const casos =
+        base.map(d => d.Casos);
+
+
+    const mediana =
+        base.map(d => d.Mediana);
+
+
+    const q1 =
+        base.map(d => d.Q1);
+
+
+    const q3 =
+        base.map(d => d.Q3);
+
+
+
+    const linhaCasos = {
+
+        x: semanas,
+
+        y: casos,
+
+        type: "scatter",
+
+        mode: "lines+markers",
+
+        name: "Casos 2026",
+
+        line: {
+            width: 3
+        },
+
+        marker: {
+            size: 7
+        }
+
+    };
+
+
+    const linhaMediana = {
+
+        x: semanas,
+
+        y: mediana,
+
+        type: "scatter",
+
+        mode: "lines",
+
+        name: "Mediana",
+
+        line: {
+            width: 2,
+            dash: "dash"
+        }
+
+    };
+
+
+    const linhaQ1 = {
+
+        x: semanas,
+
+        y: q1,
+
+        type: "scatter",
+
+        mode: "lines",
+
+        name: "Q1",
+
+        line: {
+            width: 1
+        }
+
+    };
+
+
+    const linhaQ3 = {
+
+        x: semanas,
+
+        y: q3,
+
+        type: "scatter",
+
+        mode: "lines",
+
+        name: "Q3",
+
+        fill: "tonexty",
+
+        line: {
+            width: 1
+        }
+
+    };
+
+
+    const layout = {
+
+        title: {
+            text:
+            "Diagrama de Controle — " + municipio
+        },
+
+        xaxis: {
+
+            title:
+            "Semana Epidemiológica",
+
+            tickmode:
+            "linear",
+
+            tick0: 1,
+
+            dtick: 1
+
+        },
+
+        yaxis: {
+
+            title:
+            "Número de casos",
+
+            rangemode:
+            "tozero"
+
+        },
+
+        hovermode:
+        "x unified",
+
+        legend: {
+
+            orientation: "h",
+
+            y: -0.2
+
+        },
+
+        margin: {
+
+            l: 60,
+            r: 30,
+            t: 70,
+            b: 100
+
+        }
+
+    };
+
+
+    Plotly.newPlot(
+
+        "grafico",
+
+        [
+            linhaQ1,
+            linhaQ3,
+            linhaMediana,
+            linhaCasos
+        ],
+
+        layout,
+
+        {
+            responsive: true
+        }
+
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>
