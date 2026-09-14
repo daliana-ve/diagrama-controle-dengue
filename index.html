@@ -230,7 +230,7 @@ document.getElementById("totalCasos").textContent =
 const ultimaSERegional = Math.max(
     ...dados
         .filter(d => d.Casos !== null)
-        .map(d => d.SE)
+        .map(d => Number (d.SE))
 );
 
 const casosUltimaSERegional = dados
