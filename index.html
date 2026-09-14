@@ -214,6 +214,35 @@ const totalCasos = dados
 document.getElementById("totalCasos").textContent =
     totalCasos.toLocaleString("pt-BR");
 
+        // Casos da Regional na última SE disponível
+const ultimaSERegional = Math.max(
+    ...dados
+        .filter(d => d.Casos !== null)
+        .map(d => d.SE)
+);
+
+const casosUltimaSERegional = dados
+    .filter(d =>
+        d.SE === ultimaSERegional &&
+        d.Casos !== null
+    )
+    .reduce((soma, d) => soma + d.Casos, 0);
+
+document.getElementById("casosUltimaSERegional").textContent =
+    casosUltimaSERegional.toLocaleString("pt-BR");
+
+    <div id="kpiRegionalUltimaSE" style="
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 10px 0 20px 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+">
+    <div style="font-size: 14px;">Casos na última SE — Regional</div>
+    <div id="casosUltimaSERegional" style="font-size: 28px; font-weight: bold;">--</div>
+</div>    
+
        // Calcula o total de casos da última SE disponível
 const casosUltimaSE = dados
     .filter(d =>
