@@ -88,6 +88,7 @@
 <header>
 
     <h1>Diagrama de Controle da Dengue</h1>
+    <p id="atualizacao" style="font-weight: bold;"></p>
 
     <p>
         Superintendência Regional de Saúde de Colatina
@@ -141,6 +142,18 @@ Papa.parse(arquivoCSV, {
     complete: function(resultado) {
 
         dados = resultado.data;
+
+        // Descobre automaticamente a última SE com casos informados
+        const semanasComDados = dados
+            .filter(d => d.Casos !== "" && d.Casos !== null && d.Casos !== undefined)
+            .map(d => Number(d.SE))
+            .filter(se => !isNaN(se));
+
+        const ultimaSE = Math.max(...semanasComDados);
+
+        // Mostra a informação no topo do painel
+        document.getElementById("atualizacao").textContent =
+            `Dados atualizados até a SE ${ultimaSE}/2026`;
 
         prepararDados();
 
