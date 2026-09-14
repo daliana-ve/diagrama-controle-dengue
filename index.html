@@ -115,6 +115,18 @@
     <div style="font-size: 14px;">Casos na última SE — Regional</div>
     <div id="casosUltimaSERegional" style="font-size: 28px; font-weight: bold;">--</div>
 </div>   
+
+    <div id="kpiRegionalQ3" style="
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 10px 0 20px 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+">
+    <div style="font-size: 14px;">Municípios da Regional acima do Q3</div>
+    <div id="municipiosAcimaQ3Regional" style="font-size: 28px; font-weight: bold;">--</div>
+</div>
     
     <div id="kpiTotal" style="
     display: inline-block;
@@ -275,7 +287,8 @@ const municipiosAcimaQ3 = dados.filter(d =>
 document.getElementById("municipiosAcimaQ3").textContent =
     `${municipiosAcimaQ3} de 15`;
 
-        
+  document.getElementById("municipiosAcimaQ3Regional").textContent =
+    `${municipiosAcimaQ3} de 15`;      
         prepararDados();
 
     }
