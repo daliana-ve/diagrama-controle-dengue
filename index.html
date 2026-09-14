@@ -334,7 +334,18 @@ function atualizarGrafico() {
     const q3 =
         base.map(d => d.Q3);
 
+// Identifica as semanas em que os casos ultrapassaram o Q3
+const dadosAlerta = base.filter(d =>
+    d.Casos !== null &&
+    d.Q3 !== null &&
+    d.Casos > d.Q3
+);
 
+const semanasAlerta =
+    dadosAlerta.map(d => d.SE);
+
+const casosAlerta =
+    dadosAlerta.map(d => d.Casos);
 
     const linhaCasos = {
 
@@ -358,6 +369,27 @@ function atualizarGrafico() {
 
     };
 
+    const pontosAlerta = {
+
+    x: semanasAlerta,
+
+    y: casosAlerta,
+
+    type: "scatter",
+
+    mode: "markers",
+
+    name: "Acima do Q3",
+
+    marker: {
+        size: 12,
+        symbol: "diamond"
+    },
+
+    hovertemplate:
+        "SE %{x}<br>Casos: %{y}<br>Acima do Q3<extra></extra>"
+
+};
 
     const linhaMediana = {
 
@@ -480,12 +512,13 @@ function atualizarGrafico() {
 
         "grafico",
 
-        [
-            linhaQ1,
-            linhaQ3,
-            linhaMediana,
-            linhaCasos
-        ],
+       [
+    linhaQ1,
+    linhaQ3,
+    linhaMediana,
+    linhaCasos,
+    pontosAlerta
+],
 
         layout,
 
