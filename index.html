@@ -331,7 +331,7 @@ function prepararDados() {
             dados.map(d => d.Municipio)
         )
 
-    ].sort();
+    ].sort((a, b) => a.localeCompare(b, "pt-BR"));
 
 
     const seletor =
