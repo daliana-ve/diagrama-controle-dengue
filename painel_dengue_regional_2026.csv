@@ -58,14 +58,14 @@ Baixo Guandu,4,11.0,1.5,0.0,17.25
 Baixo Guandu,5,24.0,2.5,0.0,21.5
 Baixo Guandu,6,32.0,2.0,0.0,22.5
 Baixo Guandu,7,42.0,1.0,0.75,22.0
-Baixo Guandu,8,73.0,4.0,0.75,24.75
+Baixo Guandu,8,72.0,4.0,0.75,24.75
 Baixo Guandu,9,124.0,6.0,1.75,20.5
-Baixo Guandu,10,73.0,2.5,0.75,19.75
-Baixo Guandu,11,107.0,2.0,0.75,21.5
-Baixo Guandu,12,86.0,4.0,1.0,18.75
-Baixo Guandu,13,91.0,6.0,0.75,17.5
+Baixo Guandu,10,72.0,2.5,0.75,19.75
+Baixo Guandu,11,106.0,2.0,0.75,21.5
+Baixo Guandu,12,88.0,4.0,1.0,18.75
+Baixo Guandu,13,88.0,6.0,0.75,17.5
 Baixo Guandu,14,72.0,3.0,0.75,14.75
-Baixo Guandu,15,51.0,4.0,0.75,13.5
+Baixo Guandu,15,50.0,4.0,0.75,13.5
 Baixo Guandu,16,41.0,4.5,0.75,17.5
 Baixo Guandu,17,38.0,2.5,1.75,15.0
 Baixo Guandu,18,16.0,5.0,1.5,15.75
@@ -85,7 +85,7 @@ Baixo Guandu,31,1.0,0.0,0.0,1.0
 Baixo Guandu,32,0.0,1.0,0.0,1.25
 Baixo Guandu,33,0.0,0.0,0.0,2.5
 Baixo Guandu,34,0.0,0.0,0.0,0.5
-Baixo Guandu,35,2.0,0.0,0.0,1.75
+Baixo Guandu,35,1.0,0.0,0.0,1.75
 Baixo Guandu,36,0.0,0.0,0.0,1.0
 Baixo Guandu,37,0.0,0.5,0.0,1.0
 Baixo Guandu,38,,0.0,0.0,1.0
@@ -134,11 +134,11 @@ Colatina,28,2.0,3.5,0.75,20.25
 Colatina,29,9.0,1.0,0.0,16.25
 Colatina,30,3.0,3.5,0.75,10.0
 Colatina,31,5.0,3.0,0.0,10.25
-Colatina,32,7.0,2.0,1.0,5.0
-Colatina,33,7.0,2.0,0.0,5.0
+Colatina,32,6.0,2.0,1.0,5.0
+Colatina,33,3.0,2.0,0.0,5.0
 Colatina,34,7.0,1.0,0.0,5.0
 Colatina,35,7.0,1.5,1.0,4.5
-Colatina,36,2.0,0.5,0.0,3.25
+Colatina,36,3.0,0.5,0.0,3.25
 Colatina,37,0.0,0.5,0.0,8.25
 Colatina,38,,1.0,0.0,8.25
 Colatina,39,,0.0,0.0,4.25
@@ -191,7 +191,7 @@ Governador Lindenberg,33,0.0,0.0,0.0,0.0
 Governador Lindenberg,34,0.0,0.0,0.0,0.0
 Governador Lindenberg,35,0.0,0.0,0.0,0.0
 Governador Lindenberg,36,0.0,0.0,0.0,0.0
-Governador Lindenberg,37,0.0,0.0,0.0,0.0
+Governador Lindenberg,37,1.0,0.0,0.0,0.0
 Governador Lindenberg,38,,0.0,0.0,0.25
 Governador Lindenberg,39,,0.0,0.0,0.0
 Governador Lindenberg,40,,0.0,0.0,0.0
@@ -238,12 +238,12 @@ Linhares,28,1.0,40.0,17.75,105.0
 Linhares,29,3.0,38.5,20.25,80.75
 Linhares,30,4.0,34.0,19.75,79.5
 Linhares,31,8.0,35.5,17.0,74.5
-Linhares,32,14.0,40.0,10.5,79.25
-Linhares,33,3.0,37.0,9.75,84.0
+Linhares,32,8.0,40.0,10.5,79.25
+Linhares,33,1.0,37.0,9.75,84.0
 Linhares,34,49.0,27.5,7.0,61.0
 Linhares,35,14.0,19.5,7.5,47.0
-Linhares,36,4.0,19.0,8.25,42.25
-Linhares,37,0.0,21.0,8.75,33.75
+Linhares,36,7.0,19.0,8.25,42.25
+Linhares,37,1.0,21.0,8.75,33.75
 Linhares,38,,19.0,9.75,31.75
 Linhares,39,,19.0,5.75,28.75
 Linhares,40,,23.5,2.75,35.5
@@ -658,7 +658,7 @@ São Roque do Canaã,32,0.0,0.0,0.0,1.0
 São Roque do Canaã,33,0.0,0.0,0.0,0.0
 São Roque do Canaã,34,1.0,0.0,0.0,1.0
 São Roque do Canaã,35,0.0,0.0,0.0,1.0
-São Roque do Canaã,36,3.0,0.0,0.0,0.25
+São Roque do Canaã,36,1.0,0.0,0.0,0.25
 São Roque do Canaã,37,0.0,0.0,0.0,0.25
 São Roque do Canaã,38,,0.0,0.0,0.25
 São Roque do Canaã,39,,0.0,0.0,0.25
