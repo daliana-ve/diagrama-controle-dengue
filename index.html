@@ -249,18 +249,17 @@ document.getElementById("totalCasos").textContent =
     totalCasos.toLocaleString("pt-BR");
 
         // Casos da Regional na última SE disponível
-const ultimaSERegional = Math.max(
-    ...dados
-        .filter(d => d.Casos !== null)
-        .map(d => Number (d.SE))
-);
-
 const casosUltimaSERegional = dados
     .filter(d =>
-        d.SE === ultimaSERegional &&
-        d.Casos !== null
+        Number(d.SE) === ultimaSE &&
+        d.Casos !== "" &&
+        d.Casos !== null &&
+        d.Casos !== undefined
     )
-    .reduce((soma, d) => soma + d.Casos, 0);
+    .reduce(
+        (soma, d) => soma + Number(d.Casos || 0),
+        0
+    );
 
 document.getElementById("casosUltimaSERegional").textContent =
     casosUltimaSERegional.toLocaleString("pt-BR");
