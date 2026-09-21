@@ -36,7 +36,7 @@ Alto Rio Novo,34,0.0,0.0,0.0,0.0
 Alto Rio Novo,35,0.0,0.0,0.0,0.0
 Alto Rio Novo,36,0.0,0.0,0.0,0.0
 Alto Rio Novo,37,0.0,0.0,0.0,0.0
-Alto Rio Novo,38,,0.0,0.0,0.0
+Alto Rio Novo,38,0.0,0.0,0.0,0.0
 Alto Rio Novo,39,,0.0,0.0,0.0
 Alto Rio Novo,40,,0.0,0.0,0.0
 Alto Rio Novo,41,,0.0,0.0,0.0
@@ -86,9 +86,9 @@ Baixo Guandu,32,0.0,1.0,0.0,1.25
 Baixo Guandu,33,0.0,0.0,0.0,2.5
 Baixo Guandu,34,0.0,0.0,0.0,0.5
 Baixo Guandu,35,1.0,0.0,0.0,1.75
-Baixo Guandu,36,1.0,0.0,0.0,1.0
-Baixo Guandu,37,1.0,0.5,0.0,1.0
-Baixo Guandu,38,,0.0,0.0,1.0
+Baixo Guandu,36,2.0,0.0,0.0,1.0
+Baixo Guandu,37,2.0,0.5,0.0,1.0
+Baixo Guandu,38,0.0,0.0,0.0,1.0
 Baixo Guandu,39,,0.5,0.0,1.0
 Baixo Guandu,40,,0.0,0.0,1.0
 Baixo Guandu,41,,0.0,0.0,1.0
@@ -114,10 +114,10 @@ Colatina,8,10.0,14.5,0.75,179.75
 Colatina,9,4.0,6.0,1.0,199.75
 Colatina,10,1.0,7.0,4.75,203.25
 Colatina,11,6.0,7.0,2.75,139.0
-Colatina,12,4.0,8.0,3.0,166.75
-Colatina,13,3.0,7.0,3.75,159.5
-Colatina,14,6.0,10.0,6.75,145.0
-Colatina,15,12.0,16.0,4.25,137.75
+Colatina,12,3.0,8.0,3.0,166.75
+Colatina,13,2.0,7.0,3.75,159.5
+Colatina,14,5.0,10.0,6.75,145.0
+Colatina,15,11.0,16.0,4.25,137.75
 Colatina,16,17.0,14.0,5.5,101.25
 Colatina,17,12.0,11.0,3.5,73.75
 Colatina,18,8.0,12.5,3.5,56.25
@@ -139,8 +139,8 @@ Colatina,33,3.0,2.0,0.0,5.0
 Colatina,34,7.0,1.0,0.0,5.0
 Colatina,35,7.0,1.5,1.0,4.5
 Colatina,36,8.0,0.5,0.0,3.25
-Colatina,37,11.0,0.5,0.0,8.25
-Colatina,38,,1.0,0.0,8.25
+Colatina,37,13.0,0.5,0.0,8.25
+Colatina,38,0.0,1.0,0.0,8.25
 Colatina,39,,0.0,0.0,4.25
 Colatina,40,,0.5,0.0,4.75
 Colatina,41,,0.0,0.0,1.75
@@ -192,7 +192,7 @@ Governador Lindenberg,34,0.0,0.0,0.0,0.0
 Governador Lindenberg,35,0.0,0.0,0.0,0.0
 Governador Lindenberg,36,0.0,0.0,0.0,0.0
 Governador Lindenberg,37,0.0,0.0,0.0,0.0
-Governador Lindenberg,38,,0.0,0.0,0.25
+Governador Lindenberg,38,0.0,0.0,0.0,0.25
 Governador Lindenberg,39,,0.0,0.0,0.0
 Governador Lindenberg,40,,0.0,0.0,0.0
 Governador Lindenberg,41,,0.0,0.0,0.0
@@ -242,9 +242,9 @@ Linhares,32,5.0,40.0,10.5,79.25
 Linhares,33,0.0,37.0,9.75,84.0
 Linhares,34,49.0,27.5,7.0,61.0
 Linhares,35,48.0,19.5,7.5,47.0
-Linhares,36,15.0,19.0,8.25,42.25
-Linhares,37,11.0,21.0,8.75,33.75
-Linhares,38,,19.0,9.75,31.75
+Linhares,36,28.0,19.0,8.25,42.25
+Linhares,37,16.0,21.0,8.75,33.75
+Linhares,38,0.0,19.0,9.75,31.75
 Linhares,39,,19.0,5.75,28.75
 Linhares,40,,23.5,2.75,35.5
 Linhares,41,,14.5,1.75,24.75
@@ -296,7 +296,7 @@ Mantenópolis,34,0.0,0.0,0.0,0.25
 Mantenópolis,35,0.0,0.0,0.0,0.25
 Mantenópolis,36,0.0,0.0,0.0,0.25
 Mantenópolis,37,1.0,0.0,0.0,0.0
-Mantenópolis,38,,0.0,0.0,0.0
+Mantenópolis,38,0.0,0.0,0.0,0.0
 Mantenópolis,39,,0.0,0.0,0.0
 Mantenópolis,40,,0.0,0.0,0.0
 Mantenópolis,41,,0.0,0.0,0.0
@@ -348,7 +348,7 @@ Marilândia,34,0.0,0.0,0.0,0.25
 Marilândia,35,1.0,0.0,0.0,0.25
 Marilândia,36,0.0,0.0,0.0,0.0
 Marilândia,37,0.0,0.0,0.0,0.25
-Marilândia,38,,0.0,0.0,1.0
+Marilândia,38,0.0,0.0,0.0,1.0
 Marilândia,39,,0.0,0.0,0.25
 Marilândia,40,,0.0,0.0,0.5
 Marilândia,41,,0.0,0.0,1.0
@@ -400,7 +400,7 @@ Pancas,34,3.0,0.0,0.0,0.25
 Pancas,35,1.0,0.0,0.0,0.0
 Pancas,36,1.0,0.0,0.0,1.0
 Pancas,37,0.0,0.0,0.0,0.25
-Pancas,38,,0.0,0.0,1.0
+Pancas,38,0.0,0.0,0.0,1.0
 Pancas,39,,0.0,0.0,0.75
 Pancas,40,,0.0,0.0,0.25
 Pancas,41,,0.0,0.0,0.0
@@ -451,8 +451,8 @@ Rio Bananal,33,0.0,0.0,0.0,1.0
 Rio Bananal,34,2.0,0.0,0.0,0.0
 Rio Bananal,35,2.0,0.0,0.0,0.0
 Rio Bananal,36,0.0,0.0,0.0,1.0
-Rio Bananal,37,3.0,0.0,0.0,0.0
-Rio Bananal,38,,0.0,0.0,0.0
+Rio Bananal,37,4.0,0.0,0.0,0.0
+Rio Bananal,38,0.0,0.0,0.0,0.0
 Rio Bananal,39,,0.0,0.0,0.0
 Rio Bananal,40,,0.0,0.0,0.0
 Rio Bananal,41,,0.0,0.0,0.0
@@ -502,9 +502,9 @@ Sooretama,32,0.0,1.0,0.75,1.25
 Sooretama,33,0.0,1.0,0.0,2.0
 Sooretama,34,1.0,0.0,0.0,1.75
 Sooretama,35,3.0,0.5,0.0,1.25
-Sooretama,36,0.0,0.0,0.0,2.25
+Sooretama,36,1.0,0.0,0.0,2.25
 Sooretama,37,0.0,1.0,0.0,1.0
-Sooretama,38,,0.0,0.0,1.25
+Sooretama,38,0.0,0.0,0.0,1.25
 Sooretama,39,,0.0,0.0,1.5
 Sooretama,40,,0.0,0.0,0.5
 Sooretama,41,,1.0,0.0,1.0
@@ -556,7 +556,7 @@ São Domingos do Norte,34,0.0,0.0,0.0,0.25
 São Domingos do Norte,35,0.0,0.0,0.0,1.25
 São Domingos do Norte,36,1.0,0.0,0.0,1.0
 São Domingos do Norte,37,2.0,0.0,0.0,0.25
-São Domingos do Norte,38,,0.0,0.0,0.0
+São Domingos do Norte,38,0.0,0.0,0.0,0.0
 São Domingos do Norte,39,,0.0,0.0,0.0
 São Domingos do Norte,40,,0.5,0.0,1.0
 São Domingos do Norte,41,,0.0,0.0,0.0
@@ -608,7 +608,7 @@ São Gabriel da Palha,34,0.0,0.0,0.0,1.5
 São Gabriel da Palha,35,0.0,0.0,0.0,1.25
 São Gabriel da Palha,36,1.0,0.5,0.0,1.25
 São Gabriel da Palha,37,1.0,0.0,0.0,0.25
-São Gabriel da Palha,38,,0.5,0.0,2.25
+São Gabriel da Palha,38,0.0,0.5,0.0,2.25
 São Gabriel da Palha,39,,0.0,0.0,2.25
 São Gabriel da Palha,40,,0.0,0.0,1.0
 São Gabriel da Palha,41,,0.0,0.0,1.5
@@ -660,7 +660,7 @@ São Roque do Canaã,34,1.0,0.0,0.0,1.0
 São Roque do Canaã,35,0.0,0.0,0.0,1.0
 São Roque do Canaã,36,2.0,0.0,0.0,0.25
 São Roque do Canaã,37,0.0,0.0,0.0,0.25
-São Roque do Canaã,38,,0.0,0.0,0.25
+São Roque do Canaã,38,0.0,0.0,0.0,0.25
 São Roque do Canaã,39,,0.0,0.0,0.25
 São Roque do Canaã,40,,0.0,0.0,0.25
 São Roque do Canaã,41,,0.0,0.0,0.25
@@ -712,7 +712,7 @@ Vila Valério,34,0.0,0.0,0.0,0.25
 Vila Valério,35,1.0,0.0,0.0,1.0
 Vila Valério,36,0.0,0.0,0.0,0.25
 Vila Valério,37,0.0,0.0,0.0,0.0
-Vila Valério,38,,0.0,0.0,0.5
+Vila Valério,38,0.0,0.0,0.0,0.5
 Vila Valério,39,,0.0,0.0,1.0
 Vila Valério,40,,0.0,0.0,0.25
 Vila Valério,41,,0.0,0.0,0.25
@@ -764,7 +764,7 @@ Vila Valério,52,,0.0,0.0,0.25
 Águia Branca,35,0.0,0.0,0.0,0.0
 Águia Branca,36,0.0,0.0,0.0,0.0
 Águia Branca,37,1.0,0.0,0.0,0.25
-Águia Branca,38,,0.0,0.0,0.25
+Águia Branca,38,0.0,0.0,0.0,0.25
 Águia Branca,39,,0.0,0.0,0.0
 Águia Branca,40,,0.0,0.0,0.25
 Águia Branca,41,,0.0,0.0,0.0
