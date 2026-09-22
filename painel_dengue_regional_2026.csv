@@ -139,7 +139,7 @@ Colatina,33,3.0,2.0,0.0,5.0
 Colatina,34,7.0,1.0,0.0,5.0
 Colatina,35,7.0,1.5,1.0,4.5
 Colatina,36,8.0,0.5,0.0,3.25
-Colatina,37,13.0,0.5,0.0,8.25
+Colatina,37,17.0,0.5,0.0,8.25
 Colatina,38,0.0,1.0,0.0,8.25
 Colatina,39,,0.0,0.0,4.25
 Colatina,40,,0.5,0.0,4.75
@@ -242,9 +242,9 @@ Linhares,32,5.0,40.0,10.5,79.25
 Linhares,33,0.0,37.0,9.75,84.0
 Linhares,34,49.0,27.5,7.0,61.0
 Linhares,35,48.0,19.5,7.5,47.0
-Linhares,36,28.0,19.0,8.25,42.25
+Linhares,36,24.0,19.0,8.25,42.25
 Linhares,37,16.0,21.0,8.75,33.75
-Linhares,38,0.0,19.0,9.75,31.75
+Linhares,38,2.0,19.0,9.75,31.75
 Linhares,39,,19.0,5.75,28.75
 Linhares,40,,23.5,2.75,35.5
 Linhares,41,,14.5,1.75,24.75
@@ -345,7 +345,7 @@ Marilândia,31,1.0,0.0,0.0,0.0
 Marilândia,32,0.0,0.0,0.0,0.25
 Marilândia,33,0.0,0.0,0.0,1.0
 Marilândia,34,0.0,0.0,0.0,0.25
-Marilândia,35,1.0,0.0,0.0,0.25
+Marilândia,35,0.0,0.0,0.0,0.25
 Marilândia,36,0.0,0.0,0.0,0.0
 Marilândia,37,0.0,0.0,0.0,0.25
 Marilândia,38,0.0,0.0,0.0,1.0
@@ -451,7 +451,7 @@ Rio Bananal,33,0.0,0.0,0.0,1.0
 Rio Bananal,34,2.0,0.0,0.0,0.0
 Rio Bananal,35,2.0,0.0,0.0,0.0
 Rio Bananal,36,0.0,0.0,0.0,1.0
-Rio Bananal,37,4.0,0.0,0.0,0.0
+Rio Bananal,37,3.0,0.0,0.0,0.0
 Rio Bananal,38,0.0,0.0,0.0,0.0
 Rio Bananal,39,,0.0,0.0,0.0
 Rio Bananal,40,,0.0,0.0,0.0
@@ -500,9 +500,9 @@ Sooretama,30,0.0,1.0,0.0,3.0
 Sooretama,31,0.0,2.0,1.0,2.25
 Sooretama,32,0.0,1.0,0.75,1.25
 Sooretama,33,0.0,1.0,0.0,2.0
-Sooretama,34,1.0,0.0,0.0,1.75
-Sooretama,35,3.0,0.5,0.0,1.25
-Sooretama,36,1.0,0.0,0.0,2.25
+Sooretama,34,0.0,0.0,0.0,1.75
+Sooretama,35,0.0,0.5,0.0,1.25
+Sooretama,36,0.0,0.0,0.0,2.25
 Sooretama,37,0.0,1.0,0.0,1.0
 Sooretama,38,0.0,0.0,0.0,1.25
 Sooretama,39,,0.0,0.0,1.5
@@ -554,8 +554,8 @@ São Domingos do Norte,32,0.0,0.0,0.0,0.0
 São Domingos do Norte,33,0.0,0.0,0.0,0.0
 São Domingos do Norte,34,0.0,0.0,0.0,0.25
 São Domingos do Norte,35,0.0,0.0,0.0,1.25
-São Domingos do Norte,36,1.0,0.0,0.0,1.0
-São Domingos do Norte,37,2.0,0.0,0.0,0.25
+São Domingos do Norte,36,0.0,0.0,0.0,1.0
+São Domingos do Norte,37,1.0,0.0,0.0,0.25
 São Domingos do Norte,38,0.0,0.0,0.0,0.0
 São Domingos do Norte,39,,0.0,0.0,0.0
 São Domingos do Norte,40,,0.5,0.0,1.0
@@ -607,7 +607,7 @@ São Gabriel da Palha,33,0.0,0.0,0.0,3.5
 São Gabriel da Palha,34,0.0,0.0,0.0,1.5
 São Gabriel da Palha,35,0.0,0.0,0.0,1.25
 São Gabriel da Palha,36,1.0,0.5,0.0,1.25
-São Gabriel da Palha,37,1.0,0.0,0.0,0.25
+São Gabriel da Palha,37,0.0,0.0,0.0,0.25
 São Gabriel da Palha,38,0.0,0.5,0.0,2.25
 São Gabriel da Palha,39,,0.0,0.0,2.25
 São Gabriel da Palha,40,,0.0,0.0,1.0
