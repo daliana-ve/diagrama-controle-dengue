@@ -1,0 +1,635 @@
+
+/* ==========================================================
+   MONITORAMENTO EPIDEMIOLÓGICO DA DENGUE
+   Regional de Saúde de Colatina
+========================================================== */
+
+
+/* ----------------------------------------------------------
+   CONFIGURAÇÕES GERAIS
+---------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #263238;
+    line-height: 1.5;
+}
+
+
+/* ----------------------------------------------------------
+   CABEÇALHO
+---------------------------------------------------------- */
+
+#cabecalho {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #dfe5e8;
+}
+
+.cabecalho-conteudo {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 34px 30px;
+}
+
+.cabecalho-conteudo h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.cabecalho-conteudo p {
+    margin: 6px 0 0;
+    font-size: 1.1rem;
+}
+
+#atualizacao {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #607d8b;
+}
+
+
+/* ----------------------------------------------------------
+   CONTEÚDO PRINCIPAL
+---------------------------------------------------------- */
+
+main {
+    width: min(1400px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 28px 0 50px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+section h2 {
+    margin: 0 0 18px;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+
+/* ----------------------------------------------------------
+   FILTROS
+---------------------------------------------------------- */
+
+#area-filtros {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 18px 20px;
+
+    background: #ffffff;
+    border: 1px solid #e0e5e8;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+#area-filtros label {
+    font-weight: 600;
+}
+
+#filtro-municipio {
+    min-width: 280px;
+
+    padding: 10px 12px;
+
+    font-size: 0.95rem;
+
+    background: #ffffff;
+
+    border: 1px solid #cfd8dc;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+
+/* ----------------------------------------------------------
+   KPIs
+---------------------------------------------------------- */
+
+#area-kpis {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(190px, 1fr));
+
+    gap: 16px;
+}
+
+.kpi {
+    min-height: 125px;
+
+    padding: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #e0e5e8;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.kpi-titulo {
+    margin-bottom: 10px;
+
+    font-size: 0.86rem;
+    font-weight: 600;
+
+    color: #607d8b;
+}
+
+.kpi-valor {
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    line-height: 1.15;
+}
+
+.kpi-detalhe {
+    margin-top: 8px;
+
+    font-size: 0.8rem;
+
+    color: #78909c;
+}
+
+
+/* ----------------------------------------------------------
+   CARDS DOS GRÁFICOS
+---------------------------------------------------------- */
+
+.card {
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #e0e5e8;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.card-titulo {
+    margin-bottom: 15px;
+
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+
+/* ----------------------------------------------------------
+   GRADE DE GRÁFICOS
+---------------------------------------------------------- */
+
+.grade-graficos {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.grafico {
+    width: 100%;
+    min-height: 390px;
+}
+
+
+/* ----------------------------------------------------------
+   SÉRIE TEMPORAL
+---------------------------------------------------------- */
+
+#grafico-serie-temporal {
+    width: 100%;
+    min-height: 430px;
+
+    background: #ffffff;
+
+    border: 1px solid #e0e5e8;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+
+/* ----------------------------------------------------------
+   TABELAS
+---------------------------------------------------------- */
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+
+    background: #ffffff;
+
+    border: 1px solid #e0e5e8;
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 11px 14px;
+
+    border-bottom: 1px solid #eceff1;
+
+    text-align: left;
+
+    font-size: 0.9rem;
+}
+
+th {
+    font-weight: 700;
+    background: #f8fafb;
+}
+
+
+/* ----------------------------------------------------------
+   NOTAS METODOLÓGICAS
+---------------------------------------------------------- */
+
+.nota {
+    margin-top: 10px;
+
+    font-size: 0.8rem;
+    line-height: 1.45;
+
+    color: #607d8b;
+}
+
+
+/* ----------------------------------------------------------
+   RODAPÉ
+---------------------------------------------------------- */
+
+footer {
+    padding: 25px 30px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border-top: 1px solid #dfe5e8;
+
+    color: #607d8b;
+
+    font-size: 0.8rem;
+}
+
+footer p {
+    margin: 4px 0;
+}
+
+
+/* ----------------------------------------------------------
+   RESPONSIVIDADE
+---------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .grade-graficos {
+        grid-template-columns: 1fr;
+    }
+
+    .cabecalho-conteudo h1 {
+        font-size: 1.6rem;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    main {
+        width: min(100% - 24px, 1400px);
+    }
+
+    .cabecalho-conteudo {
+        padding: 25px 16px;
+    }
+
+    #area-filtros {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #filtro-municipio {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #area-kpis {
+        grid-template-columns: 1fr;
+    }
+
+    .kpi {
+        min-height: auto;
+    }
+
+}
+
+
+/* ==========================================================
+   ACABAMENTO FINAL DO DASHBOARD
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   SEÇÕES
+   ---------------------------------------------------------- */
+
+section {
+    margin-top: 28px;
+}
+
+section h2 {
+    margin: 0 0 16px 0;
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+section h3 {
+    font-size: 1.05rem;
+}
+
+
+/* ----------------------------------------------------------
+   CARDS
+   ---------------------------------------------------------- */
+
+.card {
+    border-radius: 10px;
+}
+
+.card:hover {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+
+/* ----------------------------------------------------------
+   KPIs PRINCIPAIS
+   4 + 4 EM TELAS GRANDES
+   ---------------------------------------------------------- */
+
+#area-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+#area-kpis .card {
+    min-height: 105px;
+}
+
+
+/* ----------------------------------------------------------
+   VALORES DOS KPIs
+   ---------------------------------------------------------- */
+
+.kpi-valor {
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.kpi-titulo {
+    line-height: 1.25;
+}
+
+.kpi-detalhe {
+    line-height: 1.35;
+}
+
+
+/* ----------------------------------------------------------
+   PENDÊNCIAS DA QUALIDADE
+   3 CARDS LADO A LADO
+   ---------------------------------------------------------- */
+
+#cards-qualidade {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+#cards-qualidade .card {
+    min-height: 125px;
+}
+
+
+/* ----------------------------------------------------------
+   NOTAS METODOLÓGICAS
+   ---------------------------------------------------------- */
+
+.nota {
+    line-height: 1.45;
+    margin-top: 8px;
+}
+
+
+/* ----------------------------------------------------------
+   GRÁFICOS
+   ---------------------------------------------------------- */
+
+.grafico {
+    width: 100%;
+}
+
+
+/* ----------------------------------------------------------
+   RODAPÉ
+   ---------------------------------------------------------- */
+
+footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    line-height: 1.6;
+}
+
+
+/* ----------------------------------------------------------
+   TABLETS
+   ---------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+
+    #area-kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #cards-qualidade {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ----------------------------------------------------------
+   CELULARES
+   ---------------------------------------------------------- */
+
+@media (max-width: 650px) {
+
+    #area-kpis {
+        grid-template-columns: 1fr;
+    }
+
+    #cards-qualidade {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ==========================================================
+   CABEÇALHO INSTITUCIONAL
+   ========================================================== */
+
+.cabecalho-institucional {
+    background: #ffffff;
+    border-bottom: 1px solid #d9e0e6;
+    padding: 20px 24px;
+}
+
+.cabecalho-conteudo {
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 32px;
+}
+
+
+/* ----------------------------------------------------------
+   IDENTIDADE VISUAL
+   ---------------------------------------------------------- */
+
+.marca-institucional {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    padding-right: 30px;
+
+    border-right: 1px solid #d9e0e6;
+}
+
+.logo-sesa {
+    display: block;
+
+    width: 320px;
+    max-width: 100%;
+
+    height: auto;
+}
+
+
+/* ----------------------------------------------------------
+   TÍTULO
+   ---------------------------------------------------------- */
+
+.titulo-painel {
+    flex: 1;
+}
+
+.titulo-painel h1 {
+    margin: 0 0 7px 0;
+
+    font-size: 1.65rem;
+    line-height: 1.2;
+
+    font-weight: 700;
+}
+
+.subtitulo-painel {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.atualizacao-painel {
+    font-size: 0.85rem;
+    opacity: 0.72;
+}
+
+
+/* ----------------------------------------------------------
+   RESPONSIVIDADE
+   ---------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .cabecalho-conteudo {
+        gap: 20px;
+    }
+
+    .marca-institucional {
+        padding-right: 20px;
+    }
+
+    .logo-sesa {
+        width: 240px;
+    }
+
+    .titulo-painel h1 {
+        font-size: 1.4rem;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .cabecalho-institucional {
+        padding: 18px;
+    }
+
+    .cabecalho-conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .marca-institucional {
+        width: 100%;
+
+        padding-right: 0;
+        padding-bottom: 16px;
+
+        border-right: 0;
+        border-bottom: 1px solid #d9e0e6;
+    }
+
+    .logo-sesa {
+        width: 270px;
+        max-width: 90%;
+    }
+
+    .titulo-painel h1 {
+        font-size: 1.35rem;
+    }
+
+}

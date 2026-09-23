@@ -1,827 +1,453 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Diagrama de Controle da Dengue - Regional de Colatina</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <!-- Biblioteca dos gráficos -->
+    <title>
+        Monitoramento Epidemiológico da Dengue
+    </title>
+
+    <!-- Plotly -->
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 
-    <!-- Biblioteca para ler o CSV -->
+    <!-- PapaParse -->
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
-    <style>
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background: #ffffff;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 26px;
-        }
-
-        header p {
-            color: #666;
-            margin-top: 8px;
-        }
-
-        .container {
-            max-width: 1250px;
-            margin: 30px auto;
-            padding: 20px;
-        }
-
-        .filtro {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .filtro label {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        select {
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            min-width: 280px;
-        }
-
-        .grafico {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        #grafico {
-            width: 100%;
-            height: 600px;
-        }
-
-    </style>
+    <!-- CSS do dashboard -->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
 </head>
 
+
 <body>
 
-<header>
+    <!-- =====================================================
+         CABEÇALHO
+    ====================================================== -->
 
-    <h1>Diagrama de Controle da Dengue</h1>
-    <p id="atualizacao" style="font-weight: bold;"></p>
-    <h3 style="margin-bottom: 5px;">
-    Cenário consolidado da Regional de Saúde
-</h3>
-    <div id="kpiRegionalTotal" style="
-    display: inline-block;
-    padding: 12px 20px;
-    margin: 10px 0 20px 0;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-">
-    <div style="font-size: 14px;">Casos prováveis acumulados — Regional</div>
-    <div id="totalCasosRegional" style="font-size: 28px; font-weight: bold;">--</div>
-</div>
-
-     <div id="kpiRegionalUltimaSE" style="
-    display: inline-block;
-    padding: 12px 20px;
-    margin: 10px 0 20px 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-">
-    <div style="font-size: 14px;">Casos na última SE — Regional</div>
-    <div id="casosUltimaSERegional" style="font-size: 28px; font-weight: bold;">--</div>
-</div>   
-
-    <div id="kpiRegionalQ3" style="
-    display: inline-block;
-    padding: 12px 20px;
-    margin: 10px 0 20px 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-">
-    <div style="font-size: 14px;">Municípios da Regional acima do Q3</div>
-    <div id="municipiosAcimaQ3Regional" style="font-size: 28px; font-weight: bold;">--</div>
-</div>
-
-<h3 style="margin-top: 20px; margin-bottom: 5px;">
-    Diagrama de Controle — Consolidado Regional
-</h3>
-
-<div id="graficoRegional" style="width: 100%;"></div>
     
-  <h3 id="tituloMunicipio" style="margin-bottom: 5px; margin-top: 10px;">
-    Cenário do município selecionado
-</h3>
-    
-    <div id="kpiTotal" style="
-    display: inline-block;
-    padding: 12px 20px;
-    margin: 10px 0 20px 0;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-">
-    <div style="font-size: 14px;">Casos prováveis acumulados</div>
-    <div id="totalCasos" style="font-size: 28px; font-weight: bold;">--</div>
-</div>
+<header class="cabecalho-institucional">
 
-    <div id="kpiUltimaSE" style="
-    display: inline-block;
-    padding: 12px 20px;
-    margin: 10px 0 20px 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-">
-    <div style="font-size: 14px;">Casos na última SE</div>
-    <div id="casosUltimaSE" style="font-size: 28px; font-weight: bold;">--</div>
-</div>
+    <div class="cabecalho-conteudo">
 
-    <div id="kpiQ3" style="
-    display: inline-block;
-    padding: 12px 20px;
-    margin: 10px 0 20px 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-">
-    <div style="font-size: 14px;">Municípios acima do Q3</div>
-    <div id="municipiosAcimaQ3" style="font-size: 28px; font-weight: bold;">--</div>
-</div>
+        <div class="marca-institucional">
 
-    <p>
-        Superintendência Regional de Saúde de Colatina
-        — 2026
-    </p>
+            <img
+                src="imagens/logo-sesa-es.png"
+                alt="Governo do Estado do Espírito Santo - Secretaria da Saúde"
+                class="logo-sesa"
+            >
+
+        </div>
+
+
+        <div class="titulo-painel">
+
+            <h1>
+                Monitoramento Epidemiológico da Dengue
+            </h1>
+
+            <div class="subtitulo-painel">
+                Regional de Saúde de Colatina
+            </div>
+
+            <div
+                id="atualizacao"
+                class="atualizacao-painel">
+                Carregando dados...
+            </div>
+
+        </div>
+
+    </div>
 
 </header>
 
 
-<div class="container">
 
-    <div class="filtro">
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
 
-        <label for="municipio">
-            Município:
-        </label>
+    <main>
 
-        <select id="municipio"></select>
+        <!-- FILTROS -->
 
-    </div>
+        <section id="area-filtros">
 
+            <label for="filtro-municipio">
+                Território:
+            </label>
 
-    <div class="grafico">
+            <select id="filtro-municipio">
 
-        <div id="grafico"></div>
+                <option value="REGIONAL">
+                    Regional de Saúde de Colatina
+                </option>
 
-    </div>
+            </select>
 
-</div>
-
-
-<script>
-
-const arquivoCSV = "painel_dengue_regional_2026.csv";
-
-let dados = [];
+        </section>
 
 
-/* ------------------------------------------------
-   LER O BANCO DE DADOS
------------------------------------------------- */
+        <!-- KPIs -->
 
-Papa.parse(arquivoCSV, {
+        <section id="area-kpis">
 
-    download: true,
+            <div class="kpi">
+                <div class="kpi-titulo">Casos prováveis</div>
+                <div class="kpi-valor" id="kpi-casos-provaveis">—</div>
+                <div class="kpi-detalhe">Acumulado em 2026</div>
+            </div>
 
-    header: true,
+            <div class="kpi">
+                <div class="kpi-titulo">Incidência acumulada</div>
+                <div class="kpi-valor" id="kpi-incidencia">—</div>
+                <div class="kpi-detalhe">casos por 100 mil hab.</div>
+            </div>
 
-    skipEmptyLines: true,
+            <div class="kpi">
+                <div class="kpi-titulo">Casos nas últimas 4 SE</div>
+                <div class="kpi-valor" id="kpi-casos-4se">—</div>
+                <div class="kpi-detalhe" id="detalhe-4se">Período recente</div>
+            </div>
 
-    complete: function(resultado) {
+            <div class="kpi">
+                <div class="kpi-titulo">Incidência nas últimas 4 SE</div>
+                <div class="kpi-valor" id="kpi-incidencia-4se">—</div>
+                <div class="kpi-detalhe">casos por 100 mil hab.</div>
+            </div>
 
-        dados = resultado.data;
+            <div class="kpi">
+                <div class="kpi-titulo">Em investigação</div>
+                <div class="kpi-valor" id="kpi-investigacao">—</div>
+                <div class="kpi-detalhe">Casos ainda não classificados</div>
+            </div>
 
-        // Descobre automaticamente a última SE com casos informados
-        const semanasComDados = dados
-            .filter(d => d.Casos !== "" && d.Casos !== null && d.Casos !== undefined)
-            .map(d => Number(d.SE))
-            .filter(se => !isNaN(se));
+            <div class="kpi">
+                <div class="kpi-titulo">Hospitalizados</div>
+                <div class="kpi-valor" id="kpi-hospitalizados">—</div>
+                <div class="kpi-detalhe">Entre os casos prováveis</div>
+            </div>
 
-        const ultimaSE = Math.max(...semanasComDados);
+            <div class="kpi">
+                <div class="kpi-titulo">Sinais de alarme + graves</div>
+                <div class="kpi-valor" id="kpi-gravidade">—</div>
+                <div class="kpi-detalhe">Classificação final</div>
+            </div>
 
-        // Mostra a informação no topo do painel
-        document.getElementById("atualizacao").textContent =
-            `Dados atualizados até a SE ${ultimaSE}/2026`;
+            <div class="kpi">
+                <div class="kpi-titulo">Óbitos por dengue</div>
+                <div class="kpi-valor" id="kpi-obitos">—</div>
+                <div class="kpi-detalhe" id="detalhe-letalidade">Letalidade: —</div>
+            </div>
+
+        </section>
+
+
+        <!-- SITUAÇÃO EPIDEMIOLÓGICA -->
+
+        <section id="situacao-epidemiologica">
+
+            <h2>
+                Situação Epidemiológica
+            </h2>
+
+            <div id="grafico-serie-temporal"></div>
+
+        </section>
+
+
+        <!-- PERFIL EPIDEMIOLÓGICO -->
+
         
-        // Calcula o total acumulado de casos prováveis
-const totalCasos = dados
-    .filter(d => d.Casos !== "" && d.Casos !== null && d.Casos !== undefined)
-    .reduce((soma, d) => soma + Number(d.Casos || 0), 0);
+        <section id="perfil-epidemiologico">
 
-// Mostra o total no KPI
-document.getElementById("totalCasos").textContent =
-    totalCasos.toLocaleString("pt-BR");
+            <h2>Perfil epidemiológico</h2>
 
-        // Casos da Regional na última SE disponível
-const casosUltimaSERegional = dados
-    .filter(d =>
-        Number(d.SE) === ultimaSE &&
-        d.Casos !== "" &&
-        d.Casos !== null &&
-        d.Casos !== undefined
-    )
-    .reduce(
-        (soma, d) => soma + Number(d.Casos || 0),
-        0
-    );
+            <div class="grade-graficos">
 
-document.getElementById("casosUltimaSERegional").textContent =
-    casosUltimaSERegional.toLocaleString("pt-BR");
+                <div class="card">
+                    <div id="grafico-sexo"
+                         class="grafico"></div>
+                </div>
 
+                <div class="card">
+                    <div id="grafico-faixa-etaria"
+                         class="grafico"></div>
+                </div>
+
+            </div>
+
+        
+
+            <div class="grade-graficos"
+                 style="margin-top: 20px;">
+
+                <div class="card">
+
+                    <div
+                        id="grafico-raca-cor"
+                        class="grafico">
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div
+                        id="grafico-gestantes"
+                        class="grafico">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="card"
+                 style="margin-top: 20px;">
+
+                <div
+                    id="grafico-comorbidades"
+                    class="grafico">
+                </div>
+
+                <div class="nota">
+                    Um mesmo caso pode apresentar mais de uma
+                    comorbidade. Os percentuais utilizam como
+                    denominador o total de casos prováveis do
+                    território selecionado.
+                </div>
+
+            </div>
+</section>
     
 
-       // Calcula o total de casos da última SE disponível
-const casosUltimaSE = dados
-    .filter(d =>
-        Number(d.SE) === ultimaSE &&
-        d.Casos !== "" &&
-        d.Casos !== null &&
-        d.Casos !== undefined
-    )
-    .reduce((soma, d) => soma + Number(d.Casos || 0), 0);
 
-// Mostra o total da última SE no KPI
-document.getElementById("casosUltimaSE").textContent =
-    casosUltimaSE.toLocaleString("pt-BR"); 
+        <!-- PERFIL CLÍNICO -->
 
-        // Conta quantos municípios estão acima do Q3 na última SE
-const municipiosAcimaQ3 = dados.filter(d =>
-    Number(d.SE) === ultimaSE &&
-    d.Casos !== "" &&
-    d.Casos !== null &&
-    d.Casos !== undefined &&
-    d.Q3 !== "" &&
-    d.Q3 !== null &&
-    d.Q3 !== undefined &&
-    Number(d.Casos) > Number(d.Q3)
-).length;
+        
+        <section id="perfil-clinico">
 
-// Mostra o resultado no KPI
-document.getElementById("municipiosAcimaQ3").textContent =
-    `${municipiosAcimaQ3} de 15`;
+            <h2>Perfil clínico</h2>
 
-  document.getElementById("municipiosAcimaQ3Regional").textContent =
-    `${municipiosAcimaQ3} de 15`;      
-        prepararDados();
-        carregarGraficoRegional();
-    }
+            <div class="card">
 
-});
+                <div
+                    id="grafico-sintomas"
+                    class="grafico"
+                    style="min-height: 560px;">
+                </div>
 
+                <div class="nota">
+                    Percentuais calculados em relação ao total
+                    de casos prováveis do território selecionado.
+                    Um mesmo caso pode apresentar mais de um
+                    sinal ou sintoma.
+                </div>
 
-/* ------------------------------------------------
-   PREPARAR OS DADOS
------------------------------------------------- */
+            </div>
 
-function prepararDados() {
+        
 
-    dados.forEach(d => {
+            <div class="card"
+                 style="margin-top: 20px;">
 
-        d.SE = Number(d.SE);
+                <div
+                    id="grafico-sinais-alarme"
+                    class="grafico"
+                    style="min-height: 480px;">
+                </div>
 
-        d.Casos =
-            d.Casos === "" ? null : Number(d.Casos);
+                <div class="nota">
+                    Percentuais calculados exclusivamente entre
+                    os casos classificados como dengue com sinais
+                    de alarme. Um mesmo caso pode apresentar mais
+                    de um sinal de alarme.
+                </div>
 
-        d.Mediana =
-            d.Mediana === "" ? null : Number(d.Mediana);
+            </div>
 
-        d.Q1 =
-            d.Q1 === "" ? null : Number(d.Q1);
 
-        d.Q3 =
-            d.Q3 === "" ? null : Number(d.Q3);
+            <div class="card"
+                 style="margin-top: 20px;">
 
-    });
+                <div
+                    id="grafico-gravidade"
+                    class="grafico"
+                    style="min-height: 500px;">
+                </div>
 
+                <div class="nota">
+                    Frequência dos critérios registrados
+                    exclusivamente entre os casos classificados
+                    como dengue grave. Um mesmo caso pode apresentar
+                    mais de um critério de gravidade. Em razão do
+                    pequeno número de casos, o gráfico destaca
+                    números absolutos.
+                </div>
 
-    const municipios = [
+            </div>
+</section>
 
-        ...new Set(
-            dados.map(d => d.Municipio)
-        )
 
-    ].sort((a, b) => a.localeCompare(b, "pt-BR"));
 
+        <!-- LABORATÓRIO -->
 
-    const seletor =
-        document.getElementById("municipio");
+        
+        <section id="laboratorio">
 
+            <h2>Diagnóstico laboratorial e sorotipos</h2>
 
-    municipios.forEach(municipio => {
+            <div class="grade-graficos">
 
-        const opcao =
-            document.createElement("option");
+                <div class="card">
 
-        opcao.value = municipio;
+                    <div
+                        id="grafico-laboratorio"
+                        class="grafico"
+                        style="min-height: 450px;">
+                    </div>
 
-        opcao.textContent = municipio;
+                    <div class="nota">
+                        Resultados de NS1, RT-PCR e IgM entre
+                        os casos prováveis. O consolidado dos
+                        resultados laboratoriais está disponível
+                        para a Regional.
+                    </div>
 
-        seletor.appendChild(opcao);
+                </div>
 
-    });
 
+                <div class="card">
 
-    seletor.addEventListener(
-        "change",
-        atualizarGrafico
-    );
+                    <div
+                        id="grafico-sorotipos"
+                        class="grafico"
+                        style="min-height: 450px;">
+                    </div>
 
+                    <div class="nota">
+                        São considerados somente registros com
+                        RT-PCR positivo e sorotipo identificado.
+                    </div>
 
-    atualizarGrafico();
+                </div>
 
-}
+            </div>
 
-/* ------------------------------------------------
-   CARREGAR REFERÊNCIA E CRIAR DIAGRAMA REGIONAL
------------------------------------------------- */
+        
 
-function carregarGraficoRegional() {
-
-    Papa.parse("referencia_regional_dengue.csv", {
-
-        download: true,
-        header: true,
-        skipEmptyLines: true,
+            <div class="card"
+                 style="margin-top: 20px;">
 
-        complete: function(resultadoRegional) {
-
-            const referenciaRegional =
-                resultadoRegional.data.map(d => ({
-                    SE: Number(d.SE),
-                    Mediana: Number(d.Mediana),
-                    Q1: Number(d.Q1),
-                    Q3: Number(d.Q3)
-                }));
-
-            // Somar os casos dos 15 municípios em cada SE
-            const casosRegionais = referenciaRegional.map(ref => {
-
-                const casosDaSemana = dados
-                    .filter(d =>
-                        d.SE === ref.SE &&
-                        d.Casos !== null
-                    )
-                    .map(d => d.Casos);
-
-                return casosDaSemana.length > 0
-                    ? casosDaSemana.reduce(
-                        (soma, valor) => soma + valor,
-                        0
-                    )
-                    : null;
-            });
-
-            const semanas =
-                referenciaRegional.map(d => d.SE);
-
-            const mediana =
-                referenciaRegional.map(d => d.Mediana);
-
-            const q1 =
-                referenciaRegional.map(d => d.Q1);
-
-            const q3 =
-                referenciaRegional.map(d => d.Q3);
-
-
-            // Semanas em que os casos Regionais ultrapassaram Q3
-            const semanasAlerta = [];
-            const casosAlerta = [];
-
-            referenciaRegional.forEach((ref, i) => {
-
-                if (
-                    casosRegionais[i] !== null &&
-                    casosRegionais[i] > ref.Q3
-                ) {
-                    semanasAlerta.push(ref.SE);
-                    casosAlerta.push(casosRegionais[i]);
-                }
-
-            });
-
-
-            const linhaQ1 = {
-                x: semanas,
-                y: q1,
-                type: "scatter",
-                mode: "lines",
-                name: "Q1"
-            };
-
-
-            const linhaQ3 = {
-                x: semanas,
-                y: q3,
-                type: "scatter",
-                mode: "lines",
-                name: "Q3",
-                fill: "tonexty"
-            };
-
-
-            const linhaMediana = {
-                x: semanas,
-                y: mediana,
-                type: "scatter",
-                mode: "lines",
-                name: "Mediana",
-                line: {
-                    dash: "dash"
-                }
-            };
-
-
-            const linhaCasos = {
-                x: semanas,
-                y: casosRegionais,
-                type: "scatter",
-                mode: "lines+markers",
-                name: "Casos prováveis 2026",
-                connectgaps: false
-            };
-
-
-            const pontosAlerta = {
-                x: semanasAlerta,
-                y: casosAlerta,
-                type: "scatter",
-                mode: "markers",
-                name: "Acima do Q3",
-                marker: {
-                    size: 12,
-                    symbol: "diamond"
-                },
-                hovertemplate:
-                    "SE %{x}<br>Casos: %{y}<br>Acima do Q3<extra></extra>"
-            };
+                <div
+                    id="grafico-sorotipos-se"
+                    class="grafico"
+                    style="min-height: 500px;">
+                </div>
 
+                <div class="nota">
+                    Distribuição das amostras com RT-PCR positivo
+                    e sorotipo identificado segundo a semana
+                    epidemiológica de diagnóstico. Semanas futuras
+                    não são interpretadas como ausência de
+                    identificação viral.
+                </div>
 
-            const layoutRegional = {
+            </div>
+</section>
 
-                title:
-                    "Diagrama de Controle da Dengue — Regional de Saúde de Colatina",
 
-                xaxis: {
-                    title: "Semana Epidemiológica",
-                    tickmode: "linear",
-                    tick0: 1,
-                    dtick: 1,
-                    range: [1, 52],
-                    autorange: false
-                },
 
-                yaxis: {
-                    title: "Número de casos"
-                },
+        <!-- QUALIDADE -->
 
-                hovermode: "x unified",
+        
+        <section id="qualidade">
 
-                legend: {
-                    orientation: "h"
-                },
-
-                margin: {
-                    t: 60,
-                    r: 30,
-                    b: 60,
-                    l: 60
-                }
-            };
-
+            <h2>Qualidade e oportunidade da vigilância</h2>
 
-            Plotly.newPlot(
-                "graficoRegional",
-                [
-                    linhaQ1,
-                    linhaQ3,
-                    linhaMediana,
-                    linhaCasos,
-                    pontosAlerta
-                ],
-                layoutRegional,
-                {
-                    responsive: true
-                }
-            );
+            <div class="card">
 
-        }
+                <div
+                    id="grafico-encerramento"
+                    class="grafico"
+                    style="min-height: 430px;">
+                </div>
 
-    });
+                <div class="nota">
+                    O indicador considera notificações avaliáveis
+                    para encerramento. Casos ainda abertos e dentro
+                    do prazo de 60 dias não integram o denominador.
+                </div>
 
-}
-    
-/* ------------------------------------------------
-   CRIAR O DIAGRAMA
------------------------------------------------- */
+            </div>
 
-function atualizarGrafico() {
 
-    const municipio =
-        document.getElementById("municipio").value;
-    document.getElementById("tituloMunicipio").textContent =
-    "Cenário do município selecionado — " + municipio;
+            <h3 style="margin-top: 30px;">
+                Pendências e consistências a verificar
+            </h3>
 
 
-    const base = dados
-        .filter(d => d.Municipio === municipio)
-        .sort((a,b) => a.SE - b.SE);
+            <div
+                id="cards-qualidade"
+                class="kpis"
+                style="margin-top: 15px;">
+            </div>
 
-    // Total acumulado de casos prováveis da Regional
-const totalCasosRegional = dados
-    .filter(d => d.Casos !== null)
-    .reduce((soma, d) => soma + d.Casos, 0);
 
-document.getElementById("totalCasosRegional").textContent =
-    totalCasosRegional.toLocaleString("pt-BR");
+            <div class="nota"
+                 style="margin-top: 15px;">
 
+                Os indicadores são apresentados de forma agregada.
+                A identificação das notificações que necessitam
+                revisão permanece exclusivamente na base interna
+                de monitoramento.
 
-    const semanas =
-        base.map(d => d.SE);
+            </div>
 
+        </section>
 
-    const casos =
-        base.map(d => d.Casos);
 
+    </main>
 
-    const mediana =
-        base.map(d => d.Mediana);
 
+    <!-- =====================================================
+         RODAPÉ
+    ====================================================== -->
 
-    const q1 =
-        base.map(d => d.Q1);
+    <footer>
 
+        <p>
+            Fonte: e-SUS VS
+        </p>
 
-    const q3 =
-        base.map(d => d.Q3);
+        <p>
+            População: estimativa IBGE 2024
+        </p>
 
-    // ------------------------------------------------
-// KPIs DO MUNICÍPIO SELECIONADO
-// ------------------------------------------------
+        <p>
+            Análise temporal baseada na semana epidemiológica
+            de diagnóstico.
+        </p>
 
-// Última SE disponível no painel
-const ultimaSEPainel = Math.max(
-    ...dados
-        .filter(d => d.Casos !== null)
-        .map(d => d.SE)
-);
+    </footer>
 
-// Casos acumulados do município selecionado
-const totalCasosMunicipio = base
-    .filter(d => d.Casos !== null)
-    .reduce((soma, d) => soma + d.Casos, 0);
 
-// Casos do município na última SE disponível
-const registroUltimaSE = base.find(
-    d => d.SE === ultimaSEPainel
-);
+    <!-- JAVASCRIPT DO DASHBOARD -->
 
-const casosUltimaSEMunicipio =
-    registroUltimaSE &&
-    registroUltimaSE.Casos !== null
-        ? registroUltimaSE.Casos
-        : 0;
-
-// Atualiza os KPIs
-document.getElementById("totalCasos").textContent =
-    totalCasosMunicipio.toLocaleString("pt-BR");
-
-document.getElementById("casosUltimaSE").textContent =
-    casosUltimaSEMunicipio.toLocaleString("pt-BR");
-
-// Identifica as semanas em que os casos ultrapassaram o Q3
-const dadosAlerta = base.filter(d =>
-    d.Casos !== null &&
-    d.Q3 !== null &&
-    d.Casos > d.Q3
-);
-
-const semanasAlerta =
-    dadosAlerta.map(d => d.SE);
-
-const casosAlerta =
-    dadosAlerta.map(d => d.Casos);
-
-    const linhaCasos = {
-
-        x: semanas,
-
-        y: casos,
-
-        type: "scatter",
-
-        mode: "lines+markers",
-
-        name: "Casos 2026",
-
-        line: {
-            width: 3
-        },
-
-        marker: {
-            size: 7
-        }
-
-    };
-
-    const pontosAlerta = {
-
-    x: semanasAlerta,
-
-    y: casosAlerta,
-
-    type: "scatter",
-
-    mode: "markers",
-
-    name: "Acima do Q3",
-
-    marker: {
-        size: 12,
-        symbol: "diamond"
-    },
-
-    hovertemplate:
-        "SE %{x}<br>Casos: %{y}<br>Acima do Q3<extra></extra>"
-
-};
-
-    const linhaMediana = {
-
-        x: semanas,
-
-        y: mediana,
-
-        type: "scatter",
-
-        mode: "lines",
-
-        name: "Mediana",
-
-        line: {
-            width: 2,
-            dash: "dash"
-        }
-
-    };
-
-
-    const linhaQ1 = {
-
-        x: semanas,
-
-        y: q1,
-
-        type: "scatter",
-
-        mode: "lines",
-
-        name: "Q1",
-
-        line: {
-            width: 1
-        }
-
-    };
-
-
-    const linhaQ3 = {
-
-        x: semanas,
-
-        y: q3,
-
-        type: "scatter",
-
-        mode: "lines",
-
-        name: "Q3",
-
-        fill: "tonexty",
-
-        line: {
-            width: 1
-        }
-
-    };
-
-
-    const layout = {
-
-        title: {
-            text:
-            "Diagrama de Controle — " + municipio
-        },
-
-        xaxis: {
-
-    title:
-    "Semana Epidemiológica",
-
-    tickmode: "linear",
-
-    tick0: 1,
-
-    dtick: 1,
-
-    range: [1, 52],
-
-    autorange: false
-
-},
-
-        yaxis: {
-
-            title:
-            "Número de casos",
-
-            rangemode:
-            "tozero"
-
-        },
-
-        hovermode:
-        "x unified",
-
-        legend: {
-
-            orientation: "h",
-
-            y: -0.2
-
-        },
-
-        margin: {
-
-            l: 60,
-            r: 30,
-            t: 70,
-            b: 100
-
-        }
-
-    };
-
-
-    Plotly.newPlot(
-
-        "grafico",
-
-       [
-    linhaQ1,
-    linhaQ3,
-    linhaMediana,
-    linhaCasos,
-    pontosAlerta
-],
-
-        layout,
-
-        {
-            responsive: true
-        }
-
-    );
-
-}
-
-</script>
+    <script src="js/dashboard.js"></script>
 
 </body>
 
