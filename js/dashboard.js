@@ -3057,11 +3057,129 @@ function atualizarGraficoLaboratorio() {
 
 
     // ------------------------------------------------------
-    // O arquivo atual contém resultados laboratoriais
-    // consolidados para a Regional.
+    // FILTRAR RESULTADOS LABORATORIAIS DO TERRITÓRIO
     // ------------------------------------------------------
 
-    if (territorio !== "REGIONAL") {
+    const dados =
+        laboratorioSorotipos.filter(
+            linha =>
+                linha.TIPO ===
+                "RESULTADO_LABORATORIAL"
+                &&
+                linha.TERRITORIO === territorio
+        );
+
+
+    const testes = [
+        "NS1",
+        "RT-PCR",
+        "IgM"
+    ];
+
+
+    // ------------------------------------------------------
+    // CATEGORIAS DOS RESULTADOS
+    // ------------------------------------------------------
+
+    const resultadosPossiveis = [
+        "Positivo",
+        "Negativo",
+        "Reagente",
+        "Não reagente",
+        "Inconclusivo",
+        "Não realizado",
+        "Sem preenchimento"
+    ];
+
+
+    // ------------------------------------------------------
+    // CORES
+    // Mantemos a lógica visual do painel
+    // ------------------------------------------------------
+
+    const cores = {
+        "Positivo": "#2E7D32",
+        "Reagente": "#2E7D32",
+
+        "Negativo": "#C62828",
+        "Não reagente": "#C62828",
+
+        "Inconclusivo": "#F9A825",
+
+        "Não realizado": "#90A4AE",
+
+        "Sem preenchimento": "#BDBDBD"
+    };
+
+
+    // ------------------------------------------------------
+    // CRIAR UMA TRACE PARA CADA RESULTADO
+    // ------------------------------------------------------
+
+    const traces = [];
+
+    resultadosPossiveis.forEach(
+        resultado => {
+
+            const valores =
+                testes.map(
+                    teste => {
+
+                        const registro =
+                            dados.find(
+                                linha =>
+                                    linha.CATEGORIA === teste
+                                    &&
+                                    linha.RESULTADO === resultado
+                            );
+
+                        return registro
+                            ? Number(registro.CASOS)
+                            : 0;
+                    }
+                );
+
+
+            // Não criar série totalmente zerada
+            if (
+                valores.some(
+                    valor => valor > 0
+                )
+            ) {
+
+                traces.push({
+
+                    x: testes,
+
+                    y: valores,
+
+                    name: resultado,
+
+                    type: "bar",
+
+                    marker: {
+                        color:
+                            cores[resultado]
+                    },
+
+                    hovertemplate:
+                        "<b>%{x}</b><br>" +
+                        resultado +
+                        ": %{y:,}<extra></extra>"
+
+                });
+
+            }
+
+        }
+    );
+
+
+    // ------------------------------------------------------
+    // CASO NÃO HAJA DADOS
+    // ------------------------------------------------------
+
+    if (dados.length === 0) {
 
         Plotly.react(
 
@@ -3070,52 +3188,28 @@ function atualizarGraficoLaboratorio() {
             [],
 
             {
-
                 title: {
-
                     text:
-                        "Resultados laboratoriais",
-
-                    x:
-                        0.02,
-
+                        "Resultados dos exames laboratoriais",
+                    x: 0.02,
                     font: {
                         size: 16
                     }
-
                 },
 
                 annotations: [
-
                     {
-
                         text:
-                            "Resultados de NS1, RT-PCR e IgM disponíveis no painel apenas para o consolidado Regional",
-
-                        x:
-                            0.5,
-
-                        y:
-                            0.5,
-
-                        xref:
-                            "paper",
-
-                        yref:
-                            "paper",
-
-                        showarrow:
-                            false,
-
-                        align:
-                            "center",
-
+                            "Sem dados laboratoriais disponíveis para o território selecionado",
+                        x: 0.5,
+                        y: 0.5,
+                        xref: "paper",
+                        yref: "paper",
+                        showarrow: false,
                         font: {
                             size: 14
                         }
-
                     }
-
                 ],
 
                 xaxis: {
@@ -3127,10 +3221,10 @@ function atualizarGraficoLaboratorio() {
                 },
 
                 margin: {
-                    l: 30,
-                    r: 30,
-                    t: 65,
-                    b: 30
+                    l: 40,
+                    r: 20,
+                    t: 60,
+                    b: 40
                 },
 
                 paper_bgcolor:
@@ -3138,7 +3232,6 @@ function atualizarGraficoLaboratorio() {
 
                 plot_bgcolor:
                     "rgba(0,0,0,0)"
-
             },
 
             {
@@ -3153,169 +3246,73 @@ function atualizarGraficoLaboratorio() {
 
 
     // ------------------------------------------------------
-    // FILTRAR RESULTADOS LABORATORIAIS
+    // TÍTULO DINÂMICO
     // ------------------------------------------------------
 
-    const dados =
-        laboratorioSorotipos.filter(
-            linha =>
-                linha.TIPO ===
-                "RESULTADO_LABORATORIAL"
-        );
-
-
-    const testes = [
-        "NS1",
-        "RT-PCR",
-        "IgM"
-    ];
+    const nomeTerritorio =
+        territorio === "REGIONAL"
+            ? "Regional"
+            : territorio;
 
 
     // ------------------------------------------------------
-    // ORGANIZAR RESULTADOS
+    // LAYOUT
     // ------------------------------------------------------
-
-    const resultadosPossiveis = [
-
-        "Positivo",
-        "Reagente",
-
-        "Negativo",
-        "Não reagente",
-
-        "Inconclusivo",
-
-        "Não realizado",
-
-        "Sem preenchimento"
-
-    ];
-
-
-    const traces = [];
-
-
-    resultadosPossiveis.forEach(
-        resultado => {
-
-            const valores =
-                testes.map(
-                    teste => {
-
-                        const registro =
-                            dados.find(
-                                d =>
-                                    d.CATEGORIA === teste
-                                    &&
-                                    d.RESULTADO === resultado
-                            );
-
-                        return registro
-                            ? Number(
-                                registro.CASOS
-                              ) || 0
-                            : 0;
-
-                    }
-                );
-
-
-            const total =
-                valores.reduce(
-                    (a, b) => a + b,
-                    0
-                );
-
-
-            if (total > 0) {
-
-                traces.push({
-
-                    x:
-                        testes,
-
-                    y:
-                        valores,
-
-                    name:
-                        resultado,
-
-                    type:
-                        "bar",
-
-                    hovertemplate:
-                        "<b>%{x}</b><br>" +
-                        resultado +
-                        ": %{y}" +
-                        "<extra></extra>"
-
-                });
-
-            }
-
-        }
-    );
-
 
     const layout = {
 
         title: {
-
             text:
-                "Resultados dos exames laboratoriais — Regional",
-
-            x:
-                0.02,
-
+                `Resultados dos exames laboratoriais — ${nomeTerritorio}`,
+            x: 0.02,
             font: {
                 size: 16
             }
-
         },
 
-        barmode:
-            "stack",
+        barmode: "stack",
 
         margin: {
             l: 60,
-            r: 30,
-            t: 70,
+            r: 20,
+            t: 65,
             b: 60
         },
 
         xaxis: {
-            title: ""
+            title: {
+                text: "Exame"
+            },
+            fixedrange: true
         },
 
         yaxis: {
-
-            title:
-                "Casos prováveis",
-
-            rangemode:
-                "tozero"
+            title: {
+                text: "Número de casos"
+            },
+            rangemode: "tozero",
+            fixedrange: true
         },
 
         legend: {
-
-            orientation:
-                "h",
-
-            y:
-                -0.18,
-
-            x:
-                0
+            orientation: "h",
+            y: -0.20,
+            x: 0
         },
+
+        hovermode: "closest",
 
         paper_bgcolor:
             "rgba(0,0,0,0)",
 
         plot_bgcolor:
             "rgba(0,0,0,0)"
-
     };
 
+
+    // ------------------------------------------------------
+    // DESENHAR
+    // ------------------------------------------------------
 
     Plotly.react(
 
@@ -3326,13 +3323,8 @@ function atualizarGraficoLaboratorio() {
         layout,
 
         {
-
-            responsive:
-                true,
-
-            displaylogo:
-                false
-
+            responsive: true,
+            displaylogo: false
         }
 
     );
@@ -3340,9 +3332,6 @@ function atualizarGraficoLaboratorio() {
 }
 
 
-// ----------------------------------------------------------
-// SOROTIPOS POR TERRITÓRIO
-// ----------------------------------------------------------
 
 function atualizarGraficoSorotipos() {
 
