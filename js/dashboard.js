@@ -226,11 +226,11 @@ async function iniciarDashboard() {
 
         // Diagrama de controle
         diagramaMunicipal = await carregarCSV(
-            "dados/painel_dengue_regional_2026.csv"
+            "painel_dengue_regional_2026.csv"
         );
 
         referenciaRegional = await carregarCSV(
-            "dados/referencia_regional_dengue.csv"
+            "referencia_regional_dengue.csv"
         );
 
         console.log(
