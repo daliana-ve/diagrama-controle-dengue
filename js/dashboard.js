@@ -16,6 +16,9 @@ let perfilEpidemiologico = [];
 let perfilClinico = [];
 let laboratorioSorotipos = [];
 let qualidadeVigilancia = [];
+let diagramaMunicipal = [];
+let referenciaRegional = [];
+
 
 
 // ----------------------------------------------------------
@@ -221,6 +224,15 @@ async function iniciarDashboard() {
             "dados/qualidade_vigilancia.csv"
         );
 
+        // Diagrama de controle
+        diagramaMunicipal = await carregarCSV(
+            "dados/painel_dengue_regional_2026.csv"
+        );
+
+        referenciaRegional = await carregarCSV(
+            "dados/referencia_regional_dengue.csv"
+        );
+
         console.log(
             "Qualidade da vigilância carregada:",
             qualidadeVigilancia.length,
@@ -238,6 +250,7 @@ async function iniciarDashboard() {
 
         // Curva epidêmica inicial
         atualizarSerieTemporal();
+        atualizarDiagramaControle();
 
         // Perfil epidemiológico
         atualizarPerfilEpidemiologico();
@@ -4515,3 +4528,815 @@ function atualizarQualidadeVigilancia() {
     atualizarPendenciasQualidade();
 
 }
+
+
+// ==========================================================
+// DIAGRAMA DE CONTROLE DA DENGUE
+// ==========================================================
+
+// ----------------------------------------------------------
+// Conversão numérica robusta
+// Aceita tanto 164.75 quanto 164,75
+// ----------------------------------------------------------
+
+function numeroDiagrama(valor) {
+
+    if (
+        valor === null
+        ||
+        valor === undefined
+        ||
+        valor === ""
+    ) {
+        return null;
+    }
+
+    const convertido =
+        Number(
+            String(valor)
+            .trim()
+            .replace(",", ".")
+        );
+
+    return Number.isFinite(convertido)
+        ? convertido
+        : null;
+
+}
+
+
+// ----------------------------------------------------------
+// Normalização simples para comparar municípios
+// ----------------------------------------------------------
+
+function normalizarMunicipioDiagrama(texto) {
+
+    return String(texto || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim()
+        .toUpperCase();
+
+}
+
+
+// ----------------------------------------------------------
+// OBTER REFERÊNCIA DO TERRITÓRIO
+// ----------------------------------------------------------
+
+function obterReferenciaDiagrama(territorio) {
+
+    // ======================================================
+    // REGIONAL
+    // ======================================================
+
+    if (territorio === "REGIONAL") {
+
+        return referenciaRegional
+            .map(
+                linha => ({
+
+                    se:
+                        numeroDiagrama(
+                            linha.SE
+                        ),
+
+                    mediana:
+                        numeroDiagrama(
+                            linha.Mediana
+                        ),
+
+                    q1:
+                        numeroDiagrama(
+                            linha["Q1"]
+                        ),
+
+                    q3:
+                        numeroDiagrama(
+                            linha["Q3"]
+                        )
+
+                })
+            )
+            .filter(
+                d =>
+                    d.se !== null
+            )
+            .sort(
+                (a, b) =>
+                    a.se - b.se
+            );
+
+    }
+
+
+    // ======================================================
+    // MUNICÍPIO
+    // ======================================================
+
+    const territorioNormalizado =
+        normalizarMunicipioDiagrama(
+            territorio
+        );
+
+
+    return diagramaMunicipal
+        .filter(
+            linha =>
+                normalizarMunicipioDiagrama(
+                    linha["Municipio"]
+                )
+                ===
+                territorioNormalizado
+        )
+        .map(
+            linha => ({
+
+                se:
+                    numeroDiagrama(
+                        linha.SE
+                    ),
+
+                mediana:
+                    numeroDiagrama(
+                        linha.Mediana
+                    ),
+
+                q1:
+                    numeroDiagrama(
+                        linha["Q1"]
+                    ),
+
+                q3:
+                    numeroDiagrama(
+                        linha["Q3"]
+                    )
+
+            })
+        )
+        .filter(
+            d =>
+                d.se !== null
+        )
+        .sort(
+            (a, b) =>
+                a.se - b.se
+        );
+
+}
+
+
+// ----------------------------------------------------------
+// OBTER CASOS OBSERVADOS
+//
+// IMPORTANTE:
+// usamos serie_temporal.csv, portanto os casos permanecem
+// baseados na SEMANA EPIDEMIOLÓGICA DE DIAGNÓSTICO.
+// ----------------------------------------------------------
+
+function obterCasosDiagrama(
+    territorio,
+    ultimaSE
+) {
+
+    return serieTemporal
+        .filter(
+            linha =>
+                linha.MUNICIPIO === territorio
+                &&
+                Number(
+                    linha.SE_DIAGNOSTICO
+                ) <= ultimaSE
+        )
+        .map(
+            linha => ({
+
+                se:
+                    Number(
+                        linha.SE_DIAGNOSTICO
+                    ),
+
+                casos:
+                    Number(
+                        linha.CASOS_PROVAVEIS
+                    ) || 0
+
+            })
+        )
+        .sort(
+            (a, b) =>
+                a.se - b.se
+        );
+
+}
+
+
+// ----------------------------------------------------------
+// ATUALIZAR DIAGRAMA
+// ----------------------------------------------------------
+
+function atualizarDiagramaControle() {
+
+    const territorio =
+        document.getElementById(
+            "filtro-municipio"
+        ).value;
+
+
+    const ultimaSE =
+        Number(
+            metadados.ultima_se_diagnostico
+        ) || 53;
+
+
+    const referencia =
+        obterReferenciaDiagrama(
+            territorio
+        );
+
+
+    const observados =
+        obterCasosDiagrama(
+            territorio,
+            ultimaSE
+        );
+
+
+    // ------------------------------------------------------
+    // SEM REFERÊNCIA
+    // ------------------------------------------------------
+
+    if (referencia.length === 0) {
+
+        Plotly.react(
+
+            "grafico-diagrama-controle",
+
+            [],
+
+            {
+
+                title: {
+                    text:
+                        "Diagrama de Controle",
+                    x: 0.02
+                },
+
+                annotations: [
+                    {
+                        text:
+                            "Referência histórica não disponível para o território selecionado",
+                        x: 0.5,
+                        y: 0.5,
+                        xref: "paper",
+                        yref: "paper",
+                        showarrow: false
+                    }
+                ],
+
+                xaxis: {
+                    visible: false
+                },
+
+                yaxis: {
+                    visible: false
+                },
+
+                paper_bgcolor:
+                    "rgba(0,0,0,0)",
+
+                plot_bgcolor:
+                    "rgba(0,0,0,0)"
+
+            },
+
+            {
+                responsive: true,
+                displaylogo: false
+            }
+
+        );
+
+        return;
+    }
+
+
+    // ------------------------------------------------------
+    // REFERÊNCIA HISTÓRICA
+    // ------------------------------------------------------
+
+    const semanas =
+        referencia.map(
+            d => d.se
+        );
+
+
+    const mediana =
+        referencia.map(
+            d => d.mediana
+        );
+
+
+    const q1 =
+        referencia.map(
+            d => d.q1
+        );
+
+
+    const q3 =
+        referencia.map(
+            d => d.q3
+        );
+
+
+    // ------------------------------------------------------
+    // CASOS OBSERVADOS
+    // ------------------------------------------------------
+
+    const semanasObservadas =
+        observados.map(
+            d => d.se
+        );
+
+
+    const casosObservados =
+        observados.map(
+            d => d.casos
+        );
+
+
+    // ------------------------------------------------------
+    // IDENTIFICAR PONTOS ACIMA DO Q3
+    // ------------------------------------------------------
+
+    const mapaQ3 =
+        new Map(
+            referencia.map(
+                d => [
+                    Number(d.se),
+                    Number(d.q3)
+                ]
+            )
+        );
+
+
+    const acimaQ3 =
+        observados.filter(
+            d => {
+
+                const limite =
+                    mapaQ3.get(
+                        Number(d.se)
+                    );
+
+                return (
+                    Number.isFinite(limite)
+                    &&
+                    d.casos > limite
+                );
+
+            }
+        );
+
+
+    // ------------------------------------------------------
+    // TRACES
+    // ------------------------------------------------------
+
+    
+    // ------------------------------------------------------
+    // CANAL ENDÊMICO COLORIDO
+    //
+    // Faixas:
+    // 0 → Q1
+    // Q1 → Mediana
+    // Mediana → Q3
+    // acima do Q3
+    // ------------------------------------------------------
+
+    const traceBase = {
+
+        x: semanas,
+        y: semanas.map(() => 0),
+
+        type: "scatter",
+        mode: "lines",
+
+        line: {
+            width: 0
+        },
+
+        hoverinfo: "skip",
+        showlegend: false
+
+    };
+
+
+    // ------------------------------------------------------
+    // FAIXA 0 → Q1
+    // ------------------------------------------------------
+
+    const traceQ1 = {
+
+        x: semanas,
+        y: q1,
+
+        type: "scatter",
+        mode: "lines",
+
+        name: "Q1",
+
+        line: {
+            color: "rgba(46, 125, 50, 0.85)",
+            width: 1.5
+        },
+
+        fill: "tonexty",
+        fillcolor: "rgba(76, 175, 80, 0.24)",
+
+        hovertemplate:
+            "SE %{x}<br>" +
+            "Q1: %{y:.1f}" +
+            "<extra></extra>"
+
+    };
+
+
+    // ------------------------------------------------------
+    // FAIXA Q1 → MEDIANA
+    // ------------------------------------------------------
+
+    const traceMediana = {
+
+        x: semanas,
+        y: mediana,
+
+        type: "scatter",
+        mode: "lines",
+
+        name: "Mediana",
+
+        line: {
+            color: "rgba(210, 160, 0, 0.95)",
+            width: 1.8,
+            dash: "dash"
+        },
+
+        fill: "tonexty",
+        fillcolor: "rgba(255, 215, 0, 0.20)",
+
+        hovertemplate:
+            "SE %{x}<br>" +
+            "Mediana: %{y:.1f}" +
+            "<extra></extra>"
+
+    };
+
+
+    // ------------------------------------------------------
+    // FAIXA MEDIANA → Q3
+    // ------------------------------------------------------
+
+    const traceQ3 = {
+
+        x: semanas,
+        y: q3,
+
+        type: "scatter",
+        mode: "lines",
+
+        name: "Q3",
+
+        line: {
+            color: "rgba(230, 126, 34, 0.95)",
+            width: 2
+        },
+
+        fill: "tonexty",
+        fillcolor: "rgba(255, 152, 0, 0.22)",
+
+        hovertemplate:
+            "SE %{x}<br>" +
+            "Q3: %{y:.1f}" +
+            "<extra></extra>"
+
+    };
+
+
+    // ------------------------------------------------------
+    // LIMITE SUPERIOR VISUAL PARA A FAIXA ACIMA DO Q3
+    //
+    // Serve somente para colorir a área acima do Q3.
+    // Não representa um novo indicador epidemiológico.
+    // ------------------------------------------------------
+
+    const maiorReferencia = Math.max(
+        ...q3.filter(
+            valor => Number.isFinite(valor)
+        ),
+        ...casosObservados.filter(
+            valor => Number.isFinite(valor)
+        ),
+        1
+    );
+
+
+    const tetoCanal =
+        maiorReferencia * 1.12;
+
+
+    const traceAcimaQ3 = {
+
+        x: semanas,
+        y: semanas.map(
+            () => tetoCanal
+        ),
+
+        type: "scatter",
+        mode: "lines",
+
+        line: {
+            width: 0
+        },
+
+        fill: "tonexty",
+        fillcolor: "rgba(244, 67, 54, 0.08)",
+
+        hoverinfo: "skip",
+        showlegend: false
+
+    };
+
+
+const traceCasos = {
+
+        x:
+            semanasObservadas,
+
+        y:
+            casosObservados,
+
+        type:
+            "scatter",
+
+        mode:
+            "lines+markers",
+
+        name:
+            `Casos prováveis ${metadados.ano}`,
+
+        line: {
+            color: "#1565C0",
+            width: 3.5
+        },
+
+        marker: {
+            color: "#1565C0",
+            size: 7
+        },
+
+        hovertemplate:
+            "<b>Casos prováveis</b><br>" +
+            "SE de diagnóstico: %{x}<br>" +
+            "Casos: %{y}" +
+            "<extra></extra>"
+
+    };
+
+
+    const traces = [
+        traceBase,
+        traceQ1,
+        traceMediana,
+        traceQ3,
+        traceAcimaQ3,
+        traceCasos
+    ];
+
+
+    // ------------------------------------------------------
+    // PONTOS ACIMA DO Q3
+    // ------------------------------------------------------
+
+    if (acimaQ3.length > 0) {
+
+        traces.push({
+
+            x:
+                acimaQ3.map(
+                    d => d.se
+                ),
+
+            y:
+                acimaQ3.map(
+                    d => d.casos
+                ),
+
+            type:
+                "scatter",
+
+            mode:
+                "markers",
+
+            name:
+                "Acima do Q3",
+
+            marker: {
+                color: "#D32F2F",
+                size: 11,
+                symbol: "diamond",
+                line: {
+                    color: "#FFFFFF",
+                    width: 1
+                }
+            },
+
+            hovertemplate:
+                "<b>Acima do Q3</b><br>" +
+                "SE %{x}<br>" +
+                "Casos: %{y}" +
+                "<extra></extra>"
+
+        });
+
+    }
+
+
+    // ------------------------------------------------------
+    // LAYOUT
+    // ------------------------------------------------------
+
+    const layout = {
+
+        title: {
+
+            text:
+                "Diagrama de Controle — casos prováveis por SE de diagnóstico",
+
+            x:
+                0.02,
+
+            font: {
+                size: 16
+            }
+
+        },
+
+
+        margin: {
+            l: 70,
+            r: 40,
+            t: 80,
+            b: 80
+        },
+
+
+        xaxis: {
+
+            title:
+                "Semana epidemiológica de diagnóstico",
+
+            range:
+                [0.5, 53.5],
+
+            tick0:
+                1,
+
+            dtick:
+                2
+
+        },
+
+
+        yaxis: {
+
+            title:
+                "Casos prováveis",
+
+            rangemode:
+                "tozero"
+        },
+
+
+        legend: {
+
+            orientation:
+                "h",
+
+            x:
+                0,
+
+            y:
+                -0.20
+        },
+
+
+        shapes: [
+
+            {
+
+                type:
+                    "line",
+
+                x0:
+                    ultimaSE + 0.5,
+
+                x1:
+                    ultimaSE + 0.5,
+
+                y0:
+                    0,
+
+                y1:
+                    1,
+
+                xref:
+                    "x",
+
+                yref:
+                    "paper",
+
+                line: {
+                    width: 1,
+                    dash: "dot"
+                }
+
+            }
+
+        ],
+
+
+        annotations: [
+
+            {
+
+                text:
+                    `Dados disponíveis até a SE ${ultimaSE}`,
+
+                x:
+                    ultimaSE,
+
+                y:
+                    1.07,
+
+                xref:
+                    "x",
+
+                yref:
+                    "paper",
+
+                showarrow:
+                    false,
+
+                xanchor:
+                    "right",
+
+                font: {
+                    size: 11
+                }
+
+            }
+
+        ],
+
+
+        hovermode:
+            "x unified",
+
+
+        paper_bgcolor:
+            "rgba(0,0,0,0)",
+
+        plot_bgcolor:
+            "rgba(0,0,0,0)"
+
+    };
+
+
+    Plotly.react(
+
+        "grafico-diagrama-controle",
+
+        traces,
+
+        layout,
+
+        {
+
+            responsive:
+                true,
+
+            displaylogo:
+                false,
+
+            modeBarButtonsToRemove: [
+                "lasso2d",
+                "select2d"
+            ]
+
+        }
+
+    );
+
+}
+
