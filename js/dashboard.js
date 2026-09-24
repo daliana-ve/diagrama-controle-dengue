@@ -618,14 +618,12 @@ function atualizarKPIs() {
     // ------------------------------------------------------
 
     const inicio =
-        metadados
-        .periodo_ultimas_4_se
-        .se_inicial;
+    Number(metadados.se_inicial_ultimas_4);
+
 
     const fim =
-        metadados
-        .periodo_ultimas_4_se
-        .se_final;
+    Number(metadados.se_final_ultimas_4);
+    
 
     document.getElementById(
         "detalhe-4se"
