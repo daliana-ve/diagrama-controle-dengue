@@ -1,30 +1,19 @@
 {
     "ano": 2026,
     "ultima_se_diagnostico": 38,
-    "periodo_ultimas_4_se": {
-        "se_inicial": 35,
-        "se_final": 38
-    },
-    "data_referencia_base": "22/09/2026",
-    "populacao": {
-        "regional": 535457,
-        "fonte": "IBGE",
-        "referencia": "Estimativa populacional 2024"
-    },
-    "territorio": {
-        "regional": "Regional de Saúde de Colatina",
-        "numero_municipios": 15
-    },
+    "se_inicial_ultimas_4": 35,
+    "se_final_ultimas_4": 38,
+    "data_referencia_base": "23/09/2026",
+    "populacao_regional": 535457,
+    "fonte_populacao": "IBGE",
+    "referencia_populacao": 2024,
+    "territorio": "Regional de Saúde de Colatina",
+    "numero_municipios": 15,
     "criterios": {
-        "semana_epidemiologica": "Semana epidemiológica de diagnóstico",
-        "caso_provavel": "Todos os casos não descartados, incluindo casos em investigação",
-        "letalidade": "Óbitos por dengue / casos de dengue com sinais de alarme e dengue grave",
-        "sorotipo": "Somente RT-PCR positivo com sorotipo identificado"
-    },
-    "totais_referencia": {
-        "notificacoes": 6732,
-        "casos_provaveis": 2260,
-        "descartados": 4472,
-        "em_investigacao": 209
+        "caso_provavel": "Todos os casos não classificados como descartados, incluindo os casos em investigação.",
+        "semana_epidemiologica": "Semana epidemiológica de diagnóstico.",
+        "letalidade": "Óbitos por dengue divididos pelos casos classificados como dengue com sinais de alarme ou dengue grave.",
+        "sorotipo": "Sorotipo contabilizado somente quando há RT-PCR positivo e sorotipo identificado.",
+        "oportunidade_encerramento": "Encerramento em até 60 dias a partir da data de notificação. Casos ainda dentro do prazo e inconsistências cronológicas são excluídos do denominador."
     }
 }
