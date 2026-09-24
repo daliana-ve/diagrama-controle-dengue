@@ -77,6 +77,76 @@ function carregarCSV(caminho) {
 
 
 // ----------------------------------------------------------
+// COMPATIBILIDADE COM OS ARQUIVOS DO ATUALIZADOR MESTRE
+// ----------------------------------------------------------
+
+function normalizarDadosAtualizadorMestre() {
+
+    // indicadores_municipios.csv agora contém 15 municípios + REGIONAL.
+    // O dashboard calcula a Regional pela soma dos 15 municípios, portanto
+    // removemos a linha REGIONAL para evitar dupla contagem.
+    indicadoresMunicipios = indicadoresMunicipios
+        .filter(linha => (linha.MUNICIPIO || linha.TERRITORIO) !== "REGIONAL")
+        .map(linha => ({
+            ...linha,
+            MUNICIPIO: linha.MUNICIPIO || linha.TERRITORIO,
+            POPULACAO_2024: linha.POPULACAO_2024 ?? linha.POPULACAO,
+            CASOS_ULTIMAS_4_SE: linha.CASOS_ULTIMAS_4_SE ?? linha.CASOS_ULTIMAS_4SE,
+            ALARME_GRAVE: linha.ALARME_GRAVE ??
+                (numero(linha.SINAIS_ALARME) + numero(linha.DENGUE_GRAVE)),
+            LETALIDADE_PERC: linha.LETALIDADE_PERC ?? linha.LETALIDADE
+        }));
+
+    // serie_temporal.csv definitivo: MUNICIPIO, SE, CASOS
+    serieTemporal = serieTemporal.map(linha => ({
+        ...linha,
+        MUNICIPIO: linha.MUNICIPIO || linha.TERRITORIO,
+        SE_DIAGNOSTICO: linha.SE_DIAGNOSTICO ?? linha.SE,
+        CASOS_PROVAVEIS: linha.CASOS_PROVAVEIS ?? linha.CASOS
+    }));
+
+    // perfil_epidemiologico.csv definitivo:
+    // TERRITORIO, TIPO, CATEGORIA, CASOS, DENOMINADOR, PERCENTUAL
+    perfilEpidemiologico = perfilEpidemiologico.map(linha => {
+        let categoria = linha.CATEGORIA;
+        const mapaFaixa = {
+            "< 1 ano": "<1",
+            "1–4 anos": "1–4",
+            "5–9 anos": "5–9",
+            "10–19 anos": "10–19",
+            "20–29 anos": "20–29",
+            "30–39 anos": "30–39",
+            "40–49 anos": "40–49",
+            "50–59 anos": "50–59",
+            "60–69 anos": "60–69",
+            "70–79 anos": "70–79",
+            "80 anos ou mais": "80+"
+        };
+        if (mapaFaixa[categoria]) categoria = mapaFaixa[categoria];
+        return {
+            ...linha,
+            MUNICIPIO: linha.MUNICIPIO || linha.TERRITORIO,
+            INDICADOR: linha.INDICADOR || linha.TIPO,
+            CATEGORIA: categoria
+        };
+    });
+
+    // perfil_clinico.csv definitivo usa CATEGORIA como rótulo e GRAVIDADE.
+    perfilClinico = perfilClinico.map(linha => ({
+        ...linha,
+        INDICADOR: linha.INDICADOR || linha.CATEGORIA,
+        TIPO: linha.TIPO === "GRAVIDADE" ? "CRITERIO_GRAVIDADE" : linha.TIPO
+    }));
+
+    // Compatibilidade da semana no arquivo laboratorial/sorotipos.
+    laboratorioSorotipos = laboratorioSorotipos.map(linha => ({
+        ...linha,
+        SE_DIAGNOSTICO: linha.SE_DIAGNOSTICO ?? linha.SE
+    }));
+}
+
+
+// ----------------------------------------------------------
 // PREENCHER SELETOR DE MUNICÍPIOS
 // ----------------------------------------------------------
 
@@ -223,6 +293,9 @@ async function iniciarDashboard() {
         qualidadeVigilancia = await carregarCSV(
             "dados/qualidade_vigilancia.csv"
         );
+
+        // Compatibilizar os CSVs definitivos do Atualizador Mestre
+        normalizarDadosAtualizadorMestre();
 
         // Diagrama de controle
         diagramaMunicipal = await carregarCSV(
@@ -576,6 +649,7 @@ document.addEventListener(
 
             atualizarKPIs();
             atualizarSerieTemporal();
+            atualizarDiagramaControle();
             atualizarPerfilEpidemiologico();
             atualizarPerfilClinico();
             atualizarLaboratorio();
@@ -1401,7 +1475,7 @@ function atualizarGraficoGestantes() {
     const dadosGestantes =
         obterPerfil(
             territorio,
-            "GESTANTES"
+            "GESTANTE"
         );
 
 
@@ -1425,7 +1499,7 @@ function atualizarGraficoGestantes() {
     const dadosTrimestre =
         obterPerfil(
             territorio,
-            "TRIMESTRE_GESTACIONAL"
+            "GESTANTE"
         );
 
 
@@ -1688,6 +1762,10 @@ function atualizarGraficoComorbidades() {
         "Diabetes",
 
         "Hepatopatias",
+
+        "Hipertensão arterial",
+
+        "Doenças autoimunes",
 
         "Doenças hematológicas",
 
@@ -5328,4 +5406,3 @@ const traceCasos = {
     );
 
 }
-
