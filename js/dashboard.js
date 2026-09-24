@@ -3140,7 +3140,7 @@ function atualizarGraficoLaboratorio() {
         laboratorioSorotipos.filter(
             linha =>
                 linha.TIPO ===
-                "RESULTADO_LABORATORIAL"
+                "EXAME"
                 &&
                 linha.TERRITORIO === territorio
         );
@@ -3164,7 +3164,7 @@ function atualizarGraficoLaboratorio() {
         "Não reagente",
         "Inconclusivo",
         "Não realizado",
-        "Sem preenchimento"
+        "Sem"
     ];
 
 
