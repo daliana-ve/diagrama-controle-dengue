@@ -109,20 +109,7 @@ function normalizarDadosAtualizadorMestre() {
     // TERRITORIO, TIPO, CATEGORIA, CASOS, DENOMINADOR, PERCENTUAL
     perfilEpidemiologico = perfilEpidemiologico.map(linha => {
         let categoria = linha.CATEGORIA;
-        const mapaFaixa = {
-            "< 1 ano": "<1",
-            "1–4 anos": "1–4",
-            "5–9 anos": "5–9",
-            "10–19 anos": "10–19",
-            "20–29 anos": "20–29",
-            "30–39 anos": "30–39",
-            "40–49 anos": "40–49",
-            "50–59 anos": "50–59",
-            "60–69 anos": "60–69",
-            "70–79 anos": "70–79",
-            "80 anos ou mais": "80+"
-        };
-        if (mapaFaixa[categoria]) categoria = mapaFaixa[categoria];
+      
         return {
             ...linha,
             MUNICIPIO: linha.MUNICIPIO || linha.TERRITORIO,
@@ -1146,18 +1133,18 @@ function atualizarGraficoFaixaEtaria() {
 
 
     const ordem = [
-        "<1",
-        "1–4",
-        "5–9",
-        "10–19",
-        "20–29",
-        "30–39",
-        "40–49",
-        "50–59",
-        "60–69",
-        "70–79",
-        "80+"
-    ];
+    "0-4",
+    "5-9",
+    "10-14",
+    "15-19",
+    "20-29",
+    "30-39",
+    "40-49",
+    "50-59",
+    "60-69",
+    "70-79",
+    "80+"
+];
 
 
     const valores =
