@@ -90,7 +90,7 @@ Baixo Guandu,36,0,0.0,0.0,1.0
 Baixo Guandu,37,0,0.5,0.0,1.0
 Baixo Guandu,38,0,0.0,0.0,1.0
 Baixo Guandu,39,0,0.5,0.0,1.0
-Baixo Guandu,40,0,0.0,0.0,1.0
+Baixo Guandu,40,1,0.0,0.0,1.0
 Baixo Guandu,41,0,0.0,0.0,1.0
 Baixo Guandu,42,0,0.5,0.0,1.5
 Baixo Guandu,43,0,0.5,0.0,1.0
@@ -140,9 +140,9 @@ Colatina,34,6,1.0,0.0,5.0
 Colatina,35,5,1.5,1.0,4.5
 Colatina,36,5,0.5,0.0,3.25
 Colatina,37,23,0.5,0.0,8.25
-Colatina,38,18,1.0,0.0,8.25
-Colatina,39,3,0.0,0.0,4.25
-Colatina,40,0,0.5,0.0,4.75
+Colatina,38,19,1.0,0.0,8.25
+Colatina,39,4,0.0,0.0,4.25
+Colatina,40,1,0.5,0.0,4.75
 Colatina,41,0,0.0,0.0,1.75
 Colatina,42,0,1.0,0.75,4.0
 Colatina,43,0,2.0,0.0,4.25
@@ -240,13 +240,13 @@ Linhares,30,4,34.0,19.75,79.5
 Linhares,31,8,35.5,17.0,74.5
 Linhares,32,5,40.0,10.5,79.25
 Linhares,33,0,37.0,9.75,84.0
-Linhares,34,6,27.5,7.0,61.0
+Linhares,34,5,27.5,7.0,61.0
 Linhares,35,3,19.5,7.5,47.0
-Linhares,36,16,19.0,8.25,42.25
+Linhares,36,14,19.0,8.25,42.25
 Linhares,37,36,21.0,8.75,33.75
-Linhares,38,55,19.0,9.75,31.75
+Linhares,38,56,19.0,9.75,31.75
 Linhares,39,5,19.0,5.75,28.75
-Linhares,40,1,23.5,2.75,35.5
+Linhares,40,2,23.5,2.75,35.5
 Linhares,41,0,14.5,1.75,24.75
 Linhares,42,0,16.5,6.0,35.75
 Linhares,43,0,28.0,9.75,37.5
@@ -392,15 +392,15 @@ Pancas,26,2,0.0,0.0,2.0
 Pancas,27,1,0.0,0.0,6.0
 Pancas,28,2,0.0,0.0,1.5
 Pancas,29,1,0.0,0.0,1.5
-Pancas,30,2,0.0,0.0,0.75
+Pancas,30,3,0.0,0.0,0.75
 Pancas,31,5,0.0,0.0,1.0
 Pancas,32,1,0.0,0.0,0.0
 Pancas,33,1,0.0,0.0,0.0
 Pancas,34,3,0.0,0.0,0.25
 Pancas,35,0,0.0,0.0,0.0
-Pancas,36,1,0.0,0.0,1.0
+Pancas,36,0,0.0,0.0,1.0
 Pancas,37,0,0.0,0.0,0.25
-Pancas,38,5,0.0,0.0,1.0
+Pancas,38,4,0.0,0.0,1.0
 Pancas,39,1,0.0,0.0,0.75
 Pancas,40,3,0.0,0.0,0.25
 Pancas,41,0,0.0,0.0,0.0
@@ -448,11 +448,11 @@ Rio Bananal,30,0,0.0,0.0,1.0
 Rio Bananal,31,0,0.0,0.0,0.0
 Rio Bananal,32,2,0.0,0.0,0.0
 Rio Bananal,33,0,0.0,0.0,1.0
-Rio Bananal,34,2,0.0,0.0,0.0
-Rio Bananal,35,2,0.0,0.0,0.0
+Rio Bananal,34,0,0.0,0.0,0.0
+Rio Bananal,35,0,0.0,0.0,0.0
 Rio Bananal,36,0,0.0,0.0,1.0
 Rio Bananal,37,2,0.0,0.0,0.0
-Rio Bananal,38,5,0.0,0.0,0.0
+Rio Bananal,38,3,0.0,0.0,0.0
 Rio Bananal,39,1,0.0,0.0,0.0
 Rio Bananal,40,0,0.0,0.0,0.0
 Rio Bananal,41,0,0.0,0.0,0.0
@@ -558,7 +558,7 @@ São Domingos do Norte,36,0,0.0,0.0,1.0
 São Domingos do Norte,37,1,0.0,0.0,0.25
 São Domingos do Norte,38,0,0.0,0.0,0.0
 São Domingos do Norte,39,0,0.0,0.0,0.0
-São Domingos do Norte,40,0,0.5,0.0,1.0
+São Domingos do Norte,40,1,0.5,0.0,1.0
 São Domingos do Norte,41,0,0.0,0.0,0.0
 São Domingos do Norte,42,0,0.0,0.0,0.25
 São Domingos do Norte,43,0,0.0,0.0,1.0
@@ -661,7 +661,7 @@ São Roque do Canaã,35,0,0.0,0.0,1.0
 São Roque do Canaã,36,0,0.0,0.0,0.25
 São Roque do Canaã,37,1,0.0,0.0,0.25
 São Roque do Canaã,38,3,0.0,0.0,0.25
-São Roque do Canaã,39,1,0.0,0.0,0.25
+São Roque do Canaã,39,2,0.0,0.0,0.25
 São Roque do Canaã,40,0,0.0,0.0,0.25
 São Roque do Canaã,41,0,0.0,0.0,0.25
 São Roque do Canaã,42,0,0.0,0.0,0.25
