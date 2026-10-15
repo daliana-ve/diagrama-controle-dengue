@@ -90,7 +90,7 @@ Baixo Guandu,36,0,0.0,0.0,1.0
 Baixo Guandu,37,0,0.5,0.0,1.0
 Baixo Guandu,38,0,0.0,0.0,1.0
 Baixo Guandu,39,0,0.5,0.0,1.0
-Baixo Guandu,40,0,0.0,0.0,1.0
+Baixo Guandu,40,1,0.0,0.0,1.0
 Baixo Guandu,41,0,0.0,0.0,1.0
 Baixo Guandu,42,0,0.5,0.0,1.5
 Baixo Guandu,43,0,0.5,0.0,1.0
@@ -134,16 +134,16 @@ Colatina,28,2,3.5,0.75,20.25
 Colatina,29,9,1.0,0.0,16.25
 Colatina,30,3,3.5,0.75,10.0
 Colatina,31,5,3.0,0.0,10.25
-Colatina,32,7,2.0,1.0,5.0
+Colatina,32,6,2.0,1.0,5.0
 Colatina,33,3,2.0,0.0,5.0
 Colatina,34,6,1.0,0.0,5.0
 Colatina,35,5,1.5,1.0,4.5
-Colatina,36,4,0.5,0.0,3.25
+Colatina,36,3,0.5,0.0,3.25
 Colatina,37,6,0.5,0.0,8.25
-Colatina,38,6,1.0,0.0,8.25
+Colatina,38,4,1.0,0.0,8.25
 Colatina,39,4,0.0,0.0,4.25
-Colatina,40,2,0.5,0.0,4.75
-Colatina,41,1,0.0,0.0,1.75
+Colatina,40,4,0.5,0.0,4.75
+Colatina,41,2,0.0,0.0,1.75
 Colatina,42,0,1.0,0.75,4.0
 Colatina,43,0,2.0,0.0,4.25
 Colatina,44,0,1.0,0.0,5.5
@@ -247,7 +247,7 @@ Linhares,37,36,21.0,8.75,33.75
 Linhares,38,53,19.0,9.75,31.75
 Linhares,39,5,19.0,5.75,28.75
 Linhares,40,6,23.5,2.75,35.5
-Linhares,41,0,14.5,1.75,24.75
+Linhares,41,1,14.5,1.75,24.75
 Linhares,42,0,16.5,6.0,35.75
 Linhares,43,0,28.0,9.75,37.5
 Linhares,44,0,22.0,8.25,32.25
@@ -454,8 +454,8 @@ Rio Bananal,36,0,0.0,0.0,1.0
 Rio Bananal,37,1,0.0,0.0,0.0
 Rio Bananal,38,2,0.0,0.0,0.0
 Rio Bananal,39,0,0.0,0.0,0.0
-Rio Bananal,40,2,0.0,0.0,0.0
-Rio Bananal,41,0,0.0,0.0,0.0
+Rio Bananal,40,1,0.0,0.0,0.0
+Rio Bananal,41,1,0.0,0.0,0.0
 Rio Bananal,42,0,0.0,0.0,0.0
 Rio Bananal,43,0,0.0,0.0,0.0
 Rio Bananal,44,0,0.0,0.0,0.0
@@ -505,7 +505,7 @@ Sooretama,35,0,0.5,0.0,1.25
 Sooretama,36,0,0.0,0.0,2.25
 Sooretama,37,0,1.0,0.0,1.0
 Sooretama,38,1,0.0,0.0,1.25
-Sooretama,39,1,0.0,0.0,1.5
+Sooretama,39,0,0.0,0.0,1.5
 Sooretama,40,0,0.0,0.0,0.5
 Sooretama,41,0,1.0,0.0,1.0
 Sooretama,42,0,0.0,0.0,2.0
@@ -610,7 +610,7 @@ São Gabriel da Palha,36,1,0.5,0.0,1.25
 São Gabriel da Palha,37,0,0.0,0.0,0.25
 São Gabriel da Palha,38,0,0.5,0.0,2.25
 São Gabriel da Palha,39,0,0.0,0.0,2.25
-São Gabriel da Palha,40,1,0.0,0.0,1.0
+São Gabriel da Palha,40,0,0.0,0.0,1.0
 São Gabriel da Palha,41,0,0.0,0.0,1.5
 São Gabriel da Palha,42,0,0.0,0.0,1.25
 São Gabriel da Palha,43,0,0.0,0.0,1.0
@@ -662,8 +662,8 @@ São Roque do Canaã,36,0,0.0,0.0,0.25
 São Roque do Canaã,37,0,0.0,0.0,0.25
 São Roque do Canaã,38,0,0.0,0.0,0.25
 São Roque do Canaã,39,0,0.0,0.0,0.25
-São Roque do Canaã,40,1,0.0,0.0,0.25
-São Roque do Canaã,41,1,0.0,0.0,0.25
+São Roque do Canaã,40,0,0.0,0.0,0.25
+São Roque do Canaã,41,3,0.0,0.0,0.25
 São Roque do Canaã,42,0,0.0,0.0,0.25
 São Roque do Canaã,43,0,0.0,0.0,0.0
 São Roque do Canaã,44,0,0.0,0.0,1.0
