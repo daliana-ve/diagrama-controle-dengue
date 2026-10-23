@@ -142,9 +142,9 @@ Colatina,36,2,0.5,0.0,3.25
 Colatina,37,5,0.5,0.0,8.25
 Colatina,38,2,1.0,0.0,8.25
 Colatina,39,2,0.0,0.0,4.25
-Colatina,40,4,0.5,0.0,4.75
+Colatina,40,5,0.5,0.0,4.75
 Colatina,41,5,0.0,0.0,1.75
-Colatina,42,0,1.0,0.75,4.0
+Colatina,42,1,1.0,0.75,4.0
 Colatina,43,0,2.0,0.0,4.25
 Colatina,44,0,1.0,0.0,5.5
 Colatina,45,0,2.0,0.0,5.5
@@ -244,11 +244,11 @@ Linhares,34,5,27.5,7.0,61.0
 Linhares,35,3,19.5,7.5,47.0
 Linhares,36,12,19.0,8.25,42.25
 Linhares,37,21,21.0,8.75,33.75
-Linhares,38,30,19.0,9.75,31.75
-Linhares,39,21,19.0,5.75,28.75
-Linhares,40,7,23.5,2.75,35.5
+Linhares,38,29,19.0,9.75,31.75
+Linhares,39,24,19.0,5.75,28.75
+Linhares,40,9,23.5,2.75,35.5
 Linhares,41,2,14.5,1.75,24.75
-Linhares,42,1,16.5,6.0,35.75
+Linhares,42,2,16.5,6.0,35.75
 Linhares,43,0,28.0,9.75,37.5
 Linhares,44,0,22.0,8.25,32.25
 Linhares,45,0,14.0,8.5,37.0
@@ -404,7 +404,7 @@ Pancas,38,2,0.0,0.0,1.0
 Pancas,39,1,0.0,0.0,0.75
 Pancas,40,6,0.0,0.0,0.25
 Pancas,41,1,0.0,0.0,0.0
-Pancas,42,1,0.0,0.0,2.25
+Pancas,42,2,0.0,0.0,2.25
 Pancas,43,0,0.0,0.0,0.25
 Pancas,44,0,0.0,0.0,0.0
 Pancas,45,0,0.0,0.0,0.0
@@ -452,10 +452,10 @@ Rio Bananal,34,0,0.0,0.0,0.0
 Rio Bananal,35,0,0.0,0.0,0.0
 Rio Bananal,36,0,0.0,0.0,1.0
 Rio Bananal,37,1,0.0,0.0,0.0
-Rio Bananal,38,2,0.0,0.0,0.0
+Rio Bananal,38,0,0.0,0.0,0.0
 Rio Bananal,39,0,0.0,0.0,0.0
 Rio Bananal,40,1,0.0,0.0,0.0
-Rio Bananal,41,3,0.0,0.0,0.0
+Rio Bananal,41,2,0.0,0.0,0.0
 Rio Bananal,42,0,0.0,0.0,0.0
 Rio Bananal,43,0,0.0,0.0,0.0
 Rio Bananal,44,0,0.0,0.0,0.0
@@ -664,7 +664,7 @@ São Roque do Canaã,38,0,0.0,0.0,0.25
 São Roque do Canaã,39,0,0.0,0.0,0.25
 São Roque do Canaã,40,0,0.0,0.0,0.25
 São Roque do Canaã,41,3,0.0,0.0,0.25
-São Roque do Canaã,42,1,0.0,0.0,0.25
+São Roque do Canaã,42,2,0.0,0.0,0.25
 São Roque do Canaã,43,0,0.0,0.0,0.0
 São Roque do Canaã,44,0,0.0,0.0,1.0
 São Roque do Canaã,45,0,0.0,0.0,1.25
