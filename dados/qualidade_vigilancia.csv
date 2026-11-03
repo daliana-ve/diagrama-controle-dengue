@@ -1,7 +1,7 @@
 ﻿TERRITORIO,INDICADOR,CASOS,DENOMINADOR,PERCENTUAL
-AGUIA BRANCA,Encerrados em até 60 dias,24,39,61.5
-AGUIA BRANCA,Encerrados após 60 dias,0,39,0.0
-AGUIA BRANCA,Abertos com prazo vencido,15,39,38.5
+AGUIA BRANCA,Encerrados em até 60 dias,25,40,62.5
+AGUIA BRANCA,Encerrados após 60 dias,0,40,0.0
+AGUIA BRANCA,Abertos com prazo vencido,15,40,37.5
 AGUIA BRANCA,Em investigação há mais de 60 dias,7,12,58.3
 AGUIA BRANCA,Encerramento anterior à notificação,0,41,0.0
 ALTO RIO NOVO,Encerrados em até 60 dias,4,14,28.6
@@ -9,61 +9,61 @@ ALTO RIO NOVO,Encerrados após 60 dias,0,14,0.0
 ALTO RIO NOVO,Abertos com prazo vencido,10,14,71.4
 ALTO RIO NOVO,Em investigação há mais de 60 dias,4,4,100.0
 ALTO RIO NOVO,Encerramento anterior à notificação,0,14,0.0
-BAIXO GUANDU,Encerrados em até 60 dias,1991,2021,98.5
-BAIXO GUANDU,Encerrados após 60 dias,30,2021,1.5
-BAIXO GUANDU,Abertos com prazo vencido,0,2021,0.0
+BAIXO GUANDU,Encerrados em até 60 dias,1993,2023,98.5
+BAIXO GUANDU,Encerrados após 60 dias,30,2023,1.5
+BAIXO GUANDU,Abertos com prazo vencido,0,2023,0.0
 BAIXO GUANDU,Em investigação há mais de 60 dias,0,2,0.0
-BAIXO GUANDU,Encerramento anterior à notificação,0,2022,0.0
-COLATINA,Encerrados em até 60 dias,1353,1353,100.0
-COLATINA,Encerrados após 60 dias,0,1353,0.0
-COLATINA,Abertos com prazo vencido,0,1353,0.0
-COLATINA,Em investigação há mais de 60 dias,0,9,0.0
-COLATINA,Encerramento anterior à notificação,22,1423,1.5
+BAIXO GUANDU,Encerramento anterior à notificação,0,2024,0.0
+COLATINA,Encerrados em até 60 dias,1385,1385,100.0
+COLATINA,Encerrados após 60 dias,0,1385,0.0
+COLATINA,Abertos com prazo vencido,0,1385,0.0
+COLATINA,Em investigação há mais de 60 dias,0,6,0.0
+COLATINA,Encerramento anterior à notificação,22,1438,1.5
 GOVERNADOR LINDENBERG,Encerrados em até 60 dias,250,250,100.0
 GOVERNADOR LINDENBERG,Encerrados após 60 dias,0,250,0.0
 GOVERNADOR LINDENBERG,Abertos com prazo vencido,0,250,0.0
 GOVERNADOR LINDENBERG,Em investigação há mais de 60 dias,0,0,0.0
 GOVERNADOR LINDENBERG,Encerramento anterior à notificação,1,251,0.4
-LINHARES,Encerrados em até 60 dias,1101,1101,100.0
-LINHARES,Encerrados após 60 dias,0,1101,0.0
-LINHARES,Abertos com prazo vencido,0,1101,0.0
-LINHARES,Em investigação há mais de 60 dias,0,50,0.0
-LINHARES,Encerramento anterior à notificação,0,1151,0.0
+LINHARES,Encerrados em até 60 dias,1108,1108,100.0
+LINHARES,Encerrados após 60 dias,0,1108,0.0
+LINHARES,Abertos com prazo vencido,0,1108,0.0
+LINHARES,Em investigação há mais de 60 dias,0,55,0.0
+LINHARES,Encerramento anterior à notificação,0,1164,0.0
 MANTENOPOLIS,Encerrados em até 60 dias,2,37,5.4
 MANTENOPOLIS,Encerrados após 60 dias,0,37,0.0
 MANTENOPOLIS,Abertos com prazo vencido,35,37,94.6
-MANTENOPOLIS,Em investigação há mais de 60 dias,33,35,94.3
-MANTENOPOLIS,Encerramento anterior à notificação,1,40,2.5
-MARILANDIA,Encerrados em até 60 dias,75,87,86.2
-MARILANDIA,Encerrados após 60 dias,1,87,1.1
-MARILANDIA,Abertos com prazo vencido,11,87,12.6
-MARILANDIA,Em investigação há mais de 60 dias,1,3,33.3
+MANTENOPOLIS,Em investigação há mais de 60 dias,33,36,91.7
+MANTENOPOLIS,Encerramento anterior à notificação,1,41,2.4
+MARILANDIA,Encerrados em até 60 dias,76,88,86.4
+MARILANDIA,Encerrados após 60 dias,1,88,1.1
+MARILANDIA,Abertos com prazo vencido,11,88,12.5
+MARILANDIA,Em investigação há mais de 60 dias,1,2,50.0
 MARILANDIA,Encerramento anterior à notificação,1,90,1.1
-PANCAS,Encerrados em até 60 dias,1100,1128,97.5
-PANCAS,Encerrados após 60 dias,16,1128,1.4
-PANCAS,Abertos com prazo vencido,12,1128,1.1
-PANCAS,Em investigação há mais de 60 dias,9,20,45.0
-PANCAS,Encerramento anterior à notificação,1,1144,0.1
-RIO BANANAL,Encerrados em até 60 dias,201,201,100.0
-RIO BANANAL,Encerrados após 60 dias,0,201,0.0
-RIO BANANAL,Abertos com prazo vencido,0,201,0.0
+PANCAS,Encerrados em até 60 dias,1100,1129,97.4
+PANCAS,Encerrados após 60 dias,16,1129,1.4
+PANCAS,Abertos com prazo vencido,13,1129,1.2
+PANCAS,Em investigação há mais de 60 dias,10,21,47.6
+PANCAS,Encerramento anterior à notificação,1,1145,0.1
+RIO BANANAL,Encerrados em até 60 dias,202,202,100.0
+RIO BANANAL,Encerrados após 60 dias,0,202,0.0
+RIO BANANAL,Abertos com prazo vencido,0,202,0.0
 RIO BANANAL,Em investigação há mais de 60 dias,0,0,0.0
-RIO BANANAL,Encerramento anterior à notificação,0,201,0.0
+RIO BANANAL,Encerramento anterior à notificação,0,202,0.0
 SAO DOMINGOS DO NORTE,Encerrados em até 60 dias,107,118,90.7
 SAO DOMINGOS DO NORTE,Encerrados após 60 dias,11,118,9.3
 SAO DOMINGOS DO NORTE,Abertos com prazo vencido,0,118,0.0
-SAO DOMINGOS DO NORTE,Em investigação há mais de 60 dias,0,2,0.0
-SAO DOMINGOS DO NORTE,Encerramento anterior à notificação,1,121,0.8
+SAO DOMINGOS DO NORTE,Em investigação há mais de 60 dias,0,4,0.0
+SAO DOMINGOS DO NORTE,Encerramento anterior à notificação,1,123,0.8
 SAO GABRIEL DA PALHA,Encerrados em até 60 dias,208,208,100.0
 SAO GABRIEL DA PALHA,Encerrados após 60 dias,0,208,0.0
 SAO GABRIEL DA PALHA,Abertos com prazo vencido,0,208,0.0
-SAO GABRIEL DA PALHA,Em investigação há mais de 60 dias,0,0,0.0
-SAO GABRIEL DA PALHA,Encerramento anterior à notificação,0,208,0.0
-SAO ROQUE DO CANAA,Encerrados em até 60 dias,128,130,98.5
-SAO ROQUE DO CANAA,Encerrados após 60 dias,2,130,1.5
-SAO ROQUE DO CANAA,Abertos com prazo vencido,0,130,0.0
-SAO ROQUE DO CANAA,Em investigação há mais de 60 dias,0,5,0.0
-SAO ROQUE DO CANAA,Encerramento anterior à notificação,0,136,0.0
+SAO GABRIEL DA PALHA,Em investigação há mais de 60 dias,0,1,0.0
+SAO GABRIEL DA PALHA,Encerramento anterior à notificação,0,209,0.0
+SAO ROQUE DO CANAA,Encerrados em até 60 dias,134,136,98.5
+SAO ROQUE DO CANAA,Encerrados após 60 dias,2,136,1.5
+SAO ROQUE DO CANAA,Abertos com prazo vencido,0,136,0.0
+SAO ROQUE DO CANAA,Em investigação há mais de 60 dias,0,3,0.0
+SAO ROQUE DO CANAA,Encerramento anterior à notificação,0,139,0.0
 SOORETAMA,Encerrados em até 60 dias,142,170,83.5
 SOORETAMA,Encerrados após 60 dias,28,170,16.5
 SOORETAMA,Abertos com prazo vencido,0,170,0.0
@@ -74,11 +74,11 @@ VILA VALERIO,Encerrados após 60 dias,0,31,0.0
 VILA VALERIO,Abertos com prazo vencido,0,31,0.0
 VILA VALERIO,Em investigação há mais de 60 dias,0,0,0.0
 VILA VALERIO,Encerramento anterior à notificação,0,31,0.0
-REGIONAL,Encerrados em até 60 dias,6717,6888,97.5
-REGIONAL,Encerrados após 60 dias,88,6888,1.3
-REGIONAL,Abertos com prazo vencido,83,6888,1.2
-REGIONAL,Em investigação há mais de 60 dias,54,144,37.5
-REGIONAL,Encerramento anterior à notificação,27,7045,0.4
+REGIONAL,Encerrados em até 60 dias,6767,6939,97.5
+REGIONAL,Encerrados após 60 dias,88,6939,1.3
+REGIONAL,Abertos com prazo vencido,84,6939,1.2
+REGIONAL,Em investigação há mais de 60 dias,55,148,37.2
+REGIONAL,Encerramento anterior à notificação,27,7084,0.4
 AGUIA BRANCA,Sorotipo informado sem RT-PCR positivo,0,14,0.0
 AGUIA BRANCA,RT-PCR positivo sem sorotipo,0,0,0.0
 ALTO RIO NOVO,Sorotipo informado sem RT-PCR positivo,0,7,0.0
@@ -89,25 +89,25 @@ COLATINA,Sorotipo informado sem RT-PCR positivo,1,187,0.5
 COLATINA,RT-PCR positivo sem sorotipo,2,4,50.0
 GOVERNADOR LINDENBERG,Sorotipo informado sem RT-PCR positivo,0,46,0.0
 GOVERNADOR LINDENBERG,RT-PCR positivo sem sorotipo,0,18,0.0
-LINHARES,Sorotipo informado sem RT-PCR positivo,0,222,0.0
+LINHARES,Sorotipo informado sem RT-PCR positivo,0,228,0.0
 LINHARES,RT-PCR positivo sem sorotipo,0,1,0.0
-MANTENOPOLIS,Sorotipo informado sem RT-PCR positivo,0,38,0.0
+MANTENOPOLIS,Sorotipo informado sem RT-PCR positivo,0,39,0.0
 MANTENOPOLIS,RT-PCR positivo sem sorotipo,0,0,0.0
-MARILANDIA,Sorotipo informado sem RT-PCR positivo,0,6,0.0
+MARILANDIA,Sorotipo informado sem RT-PCR positivo,0,5,0.0
 MARILANDIA,RT-PCR positivo sem sorotipo,0,0,0.0
-PANCAS,Sorotipo informado sem RT-PCR positivo,1,633,0.2
+PANCAS,Sorotipo informado sem RT-PCR positivo,1,634,0.2
 PANCAS,RT-PCR positivo sem sorotipo,17,123,13.8
 RIO BANANAL,Sorotipo informado sem RT-PCR positivo,0,6,0.0
 RIO BANANAL,RT-PCR positivo sem sorotipo,0,2,0.0
-SAO DOMINGOS DO NORTE,Sorotipo informado sem RT-PCR positivo,0,25,0.0
+SAO DOMINGOS DO NORTE,Sorotipo informado sem RT-PCR positivo,0,27,0.0
 SAO DOMINGOS DO NORTE,RT-PCR positivo sem sorotipo,1,3,33.3
-SAO GABRIEL DA PALHA,Sorotipo informado sem RT-PCR positivo,0,14,0.0
+SAO GABRIEL DA PALHA,Sorotipo informado sem RT-PCR positivo,0,15,0.0
 SAO GABRIEL DA PALHA,RT-PCR positivo sem sorotipo,1,2,50.0
-SAO ROQUE DO CANAA,Sorotipo informado sem RT-PCR positivo,0,6,0.0
+SAO ROQUE DO CANAA,Sorotipo informado sem RT-PCR positivo,0,4,0.0
 SAO ROQUE DO CANAA,RT-PCR positivo sem sorotipo,0,1,0.0
 SOORETAMA,Sorotipo informado sem RT-PCR positivo,0,7,0.0
 SOORETAMA,RT-PCR positivo sem sorotipo,0,4,0.0
 VILA VALERIO,Sorotipo informado sem RT-PCR positivo,0,3,0.0
 VILA VALERIO,RT-PCR positivo sem sorotipo,0,0,0.0
-REGIONAL,Sorotipo informado sem RT-PCR positivo,4,2180,0.2
+REGIONAL,Sorotipo informado sem RT-PCR positivo,4,2188,0.2
 REGIONAL,RT-PCR positivo sem sorotipo,28,284,9.9
