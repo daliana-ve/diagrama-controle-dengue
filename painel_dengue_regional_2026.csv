@@ -94,7 +94,7 @@ Baixo Guandu,40,0,0.0,0.0,1.0
 Baixo Guandu,41,0,0.0,0.0,1.0
 Baixo Guandu,42,1,0.5,0.0,1.5
 Baixo Guandu,43,0,0.5,0.0,1.0
-Baixo Guandu,44,0,0.0,0.0,1.0
+Baixo Guandu,44,1,0.0,0.0,1.0
 Baixo Guandu,45,0,0.0,0.0,1.5
 Baixo Guandu,46,0,0.0,0.0,1.25
 Baixo Guandu,47,0,0.0,0.0,2.0
@@ -243,10 +243,10 @@ Linhares,33,0,37.0,9.75,84.0
 Linhares,34,5,27.5,7.0,61.0
 Linhares,35,3,19.5,7.5,47.0
 Linhares,36,12,19.0,8.25,42.25
-Linhares,37,17,21.0,8.75,33.75
-Linhares,38,18,19.0,9.75,31.75
-Linhares,39,24,19.0,5.75,28.75
-Linhares,40,9,23.5,2.75,35.5
+Linhares,37,14,21.0,8.75,33.75
+Linhares,38,12,19.0,9.75,31.75
+Linhares,39,22,19.0,5.75,28.75
+Linhares,40,6,23.5,2.75,35.5
 Linhares,41,3,14.5,1.75,24.75
 Linhares,42,8,16.5,6.0,35.75
 Linhares,43,6,28.0,9.75,37.5
@@ -406,7 +406,7 @@ Pancas,40,6,0.0,0.0,0.25
 Pancas,41,1,0.0,0.0,0.0
 Pancas,42,2,0.0,0.0,2.25
 Pancas,43,1,0.0,0.0,0.25
-Pancas,44,0,0.0,0.0,0.0
+Pancas,44,2,0.0,0.0,0.0
 Pancas,45,0,0.0,0.0,0.0
 Pancas,46,0,0.0,0.0,0.0
 Pancas,47,0,0.0,0.0,0.0
@@ -562,7 +562,7 @@ São Domingos do Norte,40,0,0.5,0.0,1.0
 São Domingos do Norte,41,0,0.0,0.0,0.0
 São Domingos do Norte,42,1,0.0,0.0,0.25
 São Domingos do Norte,43,2,0.0,0.0,1.0
-São Domingos do Norte,44,0,0.0,0.0,0.0
+São Domingos do Norte,44,1,0.0,0.0,0.0
 São Domingos do Norte,45,0,0.0,0.0,0.25
 São Domingos do Norte,46,0,0.0,0.0,0.25
 São Domingos do Norte,47,0,0.0,0.0,0.0
@@ -769,7 +769,7 @@ Vila Valério,52,0,0.0,0.0,0.25
 Águia Branca,40,0,0.0,0.0,0.25
 Águia Branca,41,0,0.0,0.0,0.0
 Águia Branca,42,0,0.0,0.0,0.0
-Águia Branca,43,0,0.0,0.0,0.0
+Águia Branca,43,1,0.0,0.0,0.0
 Águia Branca,44,0,0.0,0.0,0.0
 Águia Branca,45,0,0.0,0.0,0.0
 Águia Branca,46,0,0.0,0.0,0.0
