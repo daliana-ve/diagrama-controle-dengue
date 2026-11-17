@@ -92,10 +92,10 @@ Baixo Guandu,38,0,0.0,0.0,1.0
 Baixo Guandu,39,0,0.5,0.0,1.0
 Baixo Guandu,40,0,0.0,0.0,1.0
 Baixo Guandu,41,0,0.0,0.0,1.0
-Baixo Guandu,42,1,0.5,0.0,1.5
+Baixo Guandu,42,0,0.5,0.0,1.5
 Baixo Guandu,43,0,0.5,0.0,1.0
-Baixo Guandu,44,1,0.0,0.0,1.0
-Baixo Guandu,45,0,0.0,0.0,1.5
+Baixo Guandu,44,0,0.0,0.0,1.0
+Baixo Guandu,45,2,0.0,0.0,1.5
 Baixo Guandu,46,0,0.0,0.0,1.25
 Baixo Guandu,47,0,0.0,0.0,2.0
 Baixo Guandu,48,0,1.0,0.0,3.0
@@ -144,10 +144,10 @@ Colatina,38,2,1.0,0.0,8.25
 Colatina,39,1,0.0,0.0,4.25
 Colatina,40,2,0.5,0.0,4.75
 Colatina,41,4,0.0,0.0,1.75
-Colatina,42,5,1.0,0.75,4.0
+Colatina,42,2,1.0,0.75,4.0
 Colatina,43,3,2.0,0.0,4.25
-Colatina,44,1,1.0,0.0,5.5
-Colatina,45,0,2.0,0.0,5.5
+Colatina,44,2,1.0,0.0,5.5
+Colatina,45,4,2.0,0.0,5.5
 Colatina,46,0,1.5,0.0,7.5
 Colatina,47,0,1.0,0.0,6.25
 Colatina,48,0,2.5,0.75,6.25
@@ -199,7 +199,7 @@ Governador Lindenberg,41,0,0.0,0.0,0.0
 Governador Lindenberg,42,0,0.0,0.0,0.0
 Governador Lindenberg,43,0,0.0,0.0,0.0
 Governador Lindenberg,44,0,0.0,0.0,0.0
-Governador Lindenberg,45,0,0.0,0.0,0.0
+Governador Lindenberg,45,1,0.0,0.0,0.0
 Governador Lindenberg,46,0,0.0,0.0,0.0
 Governador Lindenberg,47,0,0.0,0.0,0.0
 Governador Lindenberg,48,0,0.0,0.0,0.0
@@ -245,14 +245,14 @@ Linhares,35,3,19.5,7.5,47.0
 Linhares,36,12,19.0,8.25,42.25
 Linhares,37,13,21.0,8.75,33.75
 Linhares,38,12,19.0,9.75,31.75
-Linhares,39,21,19.0,5.75,28.75
-Linhares,40,6,23.5,2.75,35.5
+Linhares,39,7,19.0,5.75,28.75
+Linhares,40,5,23.5,2.75,35.5
 Linhares,41,2,14.5,1.75,24.75
-Linhares,42,8,16.5,6.0,35.75
+Linhares,42,7,16.5,6.0,35.75
 Linhares,43,6,28.0,9.75,37.5
-Linhares,44,3,22.0,8.25,32.25
-Linhares,45,0,14.0,8.5,37.0
-Linhares,46,0,20.5,4.5,42.25
+Linhares,44,7,22.0,8.25,32.25
+Linhares,45,6,14.0,8.5,37.0
+Linhares,46,3,20.5,4.5,42.25
 Linhares,47,0,19.5,3.5,29.5
 Linhares,48,0,19.0,8.75,45.0
 Linhares,49,0,19.0,6.75,67.75
@@ -302,7 +302,7 @@ Mantenópolis,40,0,0.0,0.0,0.0
 Mantenópolis,41,1,0.0,0.0,0.0
 Mantenópolis,42,1,0.0,0.0,0.0
 Mantenópolis,43,0,0.0,0.0,0.0
-Mantenópolis,44,1,0.0,0.0,0.0
+Mantenópolis,44,2,0.0,0.0,0.0
 Mantenópolis,45,0,0.0,0.0,0.0
 Mantenópolis,46,0,0.0,0.0,0.0
 Mantenópolis,47,0,0.0,0.0,0.75
@@ -459,7 +459,7 @@ Rio Bananal,41,0,0.0,0.0,0.0
 Rio Bananal,42,0,0.0,0.0,0.0
 Rio Bananal,43,0,0.0,0.0,0.0
 Rio Bananal,44,0,0.0,0.0,0.0
-Rio Bananal,45,0,0.0,0.0,0.0
+Rio Bananal,45,2,0.0,0.0,0.0
 Rio Bananal,46,0,0.0,0.0,0.0
 Rio Bananal,47,0,0.0,0.0,0.0
 Rio Bananal,48,0,0.0,0.0,1.0
@@ -511,7 +511,7 @@ Sooretama,41,1,1.0,0.0,1.0
 Sooretama,42,0,0.0,0.0,2.0
 Sooretama,43,0,0.0,0.0,0.0
 Sooretama,44,0,0.0,0.0,1.0
-Sooretama,45,0,0.0,0.0,0.5
+Sooretama,45,1,0.0,0.0,0.5
 Sooretama,46,0,0.0,0.0,0.25
 Sooretama,47,0,0.5,0.0,1.75
 Sooretama,48,0,0.5,0.0,3.0
@@ -613,9 +613,9 @@ São Gabriel da Palha,39,0,0.0,0.0,2.25
 São Gabriel da Palha,40,0,0.0,0.0,1.0
 São Gabriel da Palha,41,0,0.0,0.0,1.5
 São Gabriel da Palha,42,0,0.0,0.0,1.25
-São Gabriel da Palha,43,1,0.0,0.0,1.0
+São Gabriel da Palha,43,0,0.0,0.0,1.0
 São Gabriel da Palha,44,0,0.0,0.0,1.0
-São Gabriel da Palha,45,0,0.0,0.0,1.75
+São Gabriel da Palha,45,2,0.0,0.0,1.75
 São Gabriel da Palha,46,0,0.0,0.0,1.0
 São Gabriel da Palha,47,0,0.0,0.0,2.0
 São Gabriel da Palha,48,0,0.0,0.0,2.75
@@ -666,7 +666,7 @@ São Roque do Canaã,40,0,0.0,0.0,0.25
 São Roque do Canaã,41,0,0.0,0.0,0.25
 São Roque do Canaã,42,0,0.0,0.0,0.25
 São Roque do Canaã,43,0,0.0,0.0,0.0
-São Roque do Canaã,44,0,0.0,0.0,1.0
+São Roque do Canaã,44,1,0.0,0.0,1.0
 São Roque do Canaã,45,0,0.0,0.0,1.25
 São Roque do Canaã,46,0,0.0,0.0,0.75
 São Roque do Canaã,47,0,0.0,0.0,1.25
